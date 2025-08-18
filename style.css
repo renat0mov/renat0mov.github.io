@@ -124,3 +124,8 @@ p {
     justify-content: center;
     width: 100%;
 }
+
+.footer-img {
+    max-height: 1.75em;
+    width: auto;
+}
