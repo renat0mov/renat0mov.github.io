@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Renato Ribeiro - Audioglobo x Primavera Sound Porto // Short Documentary</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <link href="./style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+</head>
+<body class="bg-black text-white mx-1">
+
+<!-- Navigation -->
+<div class="container-fluid text-center mt-5">
+    <div class="row justify-content-center align-items-center">
+        <!-- Desktop Navigation -->
+        <div class="col-3 d-none d-md-flex justify-content-center">
+            <a class="text-decoration-none text-white d-flex align-items-center mx-2 hover" href="./"><p class="mb-0">WORK</p></a>
+            <a class="text-decoration-none text-white d-flex align-items-center mx-2 hover" href="./about"><p class="mb-0">ABOUT</p></a>
+        </div>
+
+        <!-- Center Name (always visible) -->
+        <div class="col-6 d-flex justify-content-center">
+            <a class="text-decoration-none text-white" href="./">
+                <h1 class="px-2">RENATO RIBEIRO</h1>
+            </a>
+        </div>
+
+        <!-- Desktop Socials -->
+        <div class="col-3 d-none d-md-flex justify-content-center">
+            <a class="text-decoration-none text-white mx-2 align-self-center hover" href="https://www.instagram.com/renat0.mov/" target="_blank" rel="noopener">
+                <h5 class="bi bi-instagram mb-0"></h5>
+            </a>
+            <a class="text-decoration-none text-white mx-2 align-self-center hover" href="https://www.youtube.com/@renat0mov" target="_blank" rel="noopener">
+                <h4 class="bi bi-youtube mb-0 d-flex"></h4>
+            </a>
+            <a class="text-decoration-none text-white mx-2 align-self-center hover" href="mailto:renatoabrribeiro@gmail.com" rel="mailto">
+                <h4 class="bi bi-envelope mb-0 d-flex"></h4>
+            </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="col-3 d-flex d-md-none justify-content-end align-items-center">
+            <button class="menu-toggle btn text-white p-0">
+                <i class="bi bi-list" style="font-size: 2rem;"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Fullscreen Menu -->
+<div id="mobileMenu" class="mobile-menu">
+    <a class="close-menu btn text-white p-0">
+        <i class="bi bi-x-lg" style="font-size: 2rem;"></i>
+    </a>
+    <div class="menu-content text-center">
+        <div class="nav-links">
+            <a class="text-decoration-none text-white" href="./"><p class="mb-3">WORK</p></a>
+            <a class="text-decoration-none text-white" href="./about"><p class="mb-3">ABOUT</p></a>
+        </div>
+        <div class="social-links">
+            <a class="text-decoration-none text-white mx-2 hover" href="https://www.instagram.com/renat0.mov/" target="_blank" rel="noopener">
+                <h5 class="bi bi-instagram mb-0"></h5>
+            </a>
+            <a class="text-decoration-none text-white mx-2 hover" href="https://www.youtube.com/@renat0mov" target="_blank" rel="noopener">
+                <h4 class="bi bi-youtube mb-0 d-flex"></h4>
+            </a>
+            <a class="text-decoration-none text-white mx-2 hover" href="mailto:renatoabrribeiro@gmail.com" rel="mailto">
+                <h4 class="bi bi-envelope mb-0 d-flex"></h4>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container d-flex flex-column justify-content-center align-items-center text-center" style="min-height: 80vh;">
+    <p class="fst-italic display-1">404 - Not Found</p>
+    <p class="h1">Looks like this scene was cut from the final edit.</p>
+    <p style="opacity: 5%;">note to self: don’t let visitors land here again...</p>
+</div>
+
+
+
+
+
+<!-- Footer -->
+<div class="container my-5 text-center opacity-75">
+    <img class="img-fluid footer-img" src="/images/otter.png" alt="good">
+    <img class="img-fluid footer-img" src="/images/fishing-pole.png" alt="bye">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const closeMenu = document.querySelector(".close-menu");
+
+        menuToggle.addEventListener("click", () => {
+            mobileMenu.style.display = "flex";
+        });
+
+        closeMenu.addEventListener("click", () => {
+            mobileMenu.style.display = "none";
+        });
+    });
+</script>
+</body>
+</html>
