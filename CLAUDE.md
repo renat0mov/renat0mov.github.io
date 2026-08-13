@@ -68,6 +68,23 @@ orthography (`direto`, `projeto`). Project names stay exactly as they are in bot
 languages — they are the works' own titles and match YouTube. Only the descriptor after
 the `//` changes.
 
+**Wording Renato has already corrected once — do not "fix" it back:**
+
+| Wrong | Right |
+|---|---|
+| Resumo em Vídeo | **Vídeo Resumo** |
+| E mais | **Entre outras** |
+
+He also keeps English loanwords the industry actually uses — "Filmmaking mudou a forma
+como olho para as produções ao vivo", "as lives obrigaram-me". That is how he talks.
+Leave them.
+
+**The two bios are no longer literal translations of each other.** Renato rewrote the
+Portuguese second and third paragraphs on 13 Aug 2026 and the English still says what it
+said before: the Portuguese ends on working in a team and "é só mandar mensagem", the
+English on working closely with people and "I'd love to hear from you". Deliberate, and
+his call to align them or not.
+
 ## Structured data
 
 JSON-LD in `<head>`, one `@graph` per page. The `Person` node is `https://renat0.mov/#renato`
@@ -120,10 +137,6 @@ in `index.html` instead, which behaves the same everywhere. Two consequences:
 ## Still to do
 
 - **Project pages have no Portuguese.** See *Pages* above.
-- **No location signal below "Portugal".** Aveiro and Porto are all over the work and named
-  nowhere as places Renato works. Adding them would be the strongest remaining local-search
-  gain — but **whether he is based in Aveiro is not established**, only that the work
-  happened there. Ask before writing it.
 - **Submit `sitemap.xml` in Search Console** once this is deployed. Renato's own job; the
   property already exists and its verification tag is in `index.html`.
 - The stale copy Google holds for `/about` (the pre-July bio) should refresh once the
@@ -136,6 +149,10 @@ framework. The site is fast to reason about because it is plain files — keep i
 
 Never invent client names, credits, dates or places. If a fact is not already in the HTML
 or confirmed by Renato, leave it out.
+
+**Renato is based in Aveiro** (confirmed 13 Aug 2026). It is in the copy, the titles and
+the `PostalAddress` on the `Person` node. Porto appears only as somewhere the work
+happened — Primavera Sound — which is not the same claim and should stay that way.
 
 **Jogo Limpo and DoZero carry "University project, no client" where the other pages have a
 `Client:` line.** They had no client because both are university projects; Renato confirmed
