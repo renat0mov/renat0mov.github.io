@@ -33,6 +33,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      # The step below uploads the whole repository, so anything sitting in it
+      # gets published on renat0.mov. These two belong to the repo, not to the
+      # site: CLAUDE.md is working notes and serve.py is the local preview.
+      # Deleting them here only affects the runner's checkout — both stay in git.
+      - name: Strip files that are not part of the site
+        run: rm -f CLAUDE.md serve.py
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

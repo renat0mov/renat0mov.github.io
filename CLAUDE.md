@@ -15,6 +15,14 @@ in the repo's Pages settings rather than by a `CNAME` file in the tree.
 There is no staging and no preview. Whatever lands on `main` is live a minute or two later,
 so check locally first and keep work on a branch until it is ready.
 
+**The workflow uploads the entire repository, so anything committed here is published on
+renat0.mov.** `CLAUDE.md` and `serve.py` are deleted in the runner before packaging — see
+the `Strip files that are not part of the site` step — because both were being served at
+`renat0.mov/CLAUDE.md` and `renat0.mov/serve.py` until 13 Aug 2026. **Anything else added
+to this repo that is not part of the site has to be added to that step**, or it goes live.
+Nothing secret was exposed, but working notes are not something to hand a crawler that
+`llms.txt` has just invited in.
+
 **Preview with `python3 serve.py`, not `python3 -m http.server`.** The bare module 404s
 every nav link: the site links to `./about` with no extension, GitHub Pages resolves that
 to `about.html` and Python's server does not. `serve.py` adds that rule and the 404.html
