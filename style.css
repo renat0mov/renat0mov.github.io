@@ -20,13 +20,12 @@ body {
     font-family: THICCCBOI, sans-serif;
 }
 
-h1 {
+/* The homepage h1 is the logo image. Bootstrap's h1 font-size and line-height
+   would add height around it, so both are neutralised — the img sets the size. */
+.site-name {
+    font-size: 0;
+    line-height: 0;
     margin: 0;
-    transition: filter 0.2s ease;
-}
-
-h1:hover {
-    filter: blur(2px);
 }
 
 .h1 {

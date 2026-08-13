@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://renat0.mov/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://renat0.mov/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://renat0.mov/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://renat0.mov/"/>
+  </url>
+
+  <url>
+    <loc>https://renat0.mov/about</loc>
+    <lastmod>2026-08-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://renat0.mov/about"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://renat0.mov/pt/sobre"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://renat0.mov/about"/>
+  </url>
+
+  <url>
+    <loc>https://renat0.mov/pt/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://renat0.mov/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://renat0.mov/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://renat0.mov/"/>
+  </url>
+
+  <url>
+    <loc>https://renat0.mov/pt/sobre</loc>
+    <lastmod>2026-08-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://renat0.mov/about"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://renat0.mov/pt/sobre"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://renat0.mov/about"/>
+  </url>
+
+  <url>
+    <loc>https://renat0.mov/audioglobo-x-primavera-sound-porto</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+
+  <url>
+    <loc>https://renat0.mov/jogo-limpo-university-project</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+
+  <url>
+    <loc>https://renat0.mov/dozero-university-project</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+
+  <url>
+    <loc>https://renat0.mov/grupo-kapittal-arraial-aauav</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+
+  <url>
+    <loc>https://renat0.mov/corrida-solidaria-aveiro-e-nosso</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+
+</urlset>
