@@ -102,31 +102,51 @@
 
         <div class="col-12 col-sm-6 col-md-4">
             <a href="./audioglobo-x-primavera-sound-porto" class="ratio ratio-16x9 position-relative d-block">
-                <img src="/images/audioglobo-x-primavera-sound-porto.gif" alt="audioglobo-x-primavera-sound-porto" class="hover-img" />
+                <video class="hover-img" poster="/images/audioglobo-x-primavera-sound-porto-poster.jpg"
+                       width="1072" height="602" muted loop playsinline preload="none" loading="lazy"
+                       aria-label="Audioglobo x Primavera Sound Porto — short documentary">
+                    <source src="/images/audioglobo-x-primavera-sound-porto.mp4" type="video/mp4" />
+                </video>
                 <div class="overlay-text">Audioglobo x Primavera Sound Porto // Short Documentary</div>
             </a>
         </div>
         <div class="col-12 col-sm-6 col-md-4">
             <a href="./jogo-limpo-university-project" class="ratio ratio-16x9 position-relative d-block">
-                <img src="/images/jogo-limpo-university-project.gif" alt="jogo-limpo-university-project" class="hover-img" />
+                <video class="hover-img" poster="/images/jogo-limpo-university-project-poster.jpg"
+                       width="800" height="600" muted loop playsinline preload="none" loading="lazy"
+                       aria-label="Jogo Limpo — teaser">
+                    <source src="/images/jogo-limpo-university-project.mp4" type="video/mp4" />
+                </video>
                 <div class="overlay-text">Jogo Limpo University Project // Teaser</div>
             </a>
         </div>
         <div class="col-12 col-sm-6 col-md-4">
             <a href="./dozero-university-project" class="ratio ratio-16x9 position-relative d-block">
-                <img src="/images/dozero-university-project.gif" alt="dozero-university-project" class="hover-img" />
+                <video class="hover-img" poster="/images/dozero-university-project-poster.jpg"
+                       width="1072" height="602" muted loop playsinline preload="none" loading="lazy"
+                       aria-label="DoZero — webserie">
+                    <source src="/images/dozero-university-project.mp4" type="video/mp4" />
+                </video>
                 <div class="overlay-text">DoZero University Project // Webserie</div>
             </a>
         </div>
         <div class="col-12 col-sm-6 col-md-4">
             <a href="./grupo-kapittal-arraial-aauav" class="ratio ratio-16x9 position-relative d-block">
-                <img src="/images/grupo-kapittal-arraial-aauav.gif" alt="grupo-kapittal-arraial-aauav" class="hover-img" />
+                <video class="hover-img" poster="/images/grupo-kapittal-arraial-aauav-poster.jpg"
+                       width="1072" height="606" muted loop playsinline preload="none" loading="lazy"
+                       aria-label="Grupo Kapittal at Arraial AAUAv — video recap">
+                    <source src="/images/grupo-kapittal-arraial-aauav.mp4" type="video/mp4" />
+                </video>
                 <div class="overlay-text">Grupo Kapittal Arraial AAUAv // Video Recap</div>
             </a>
         </div>
         <div class="col-12 col-sm-6 col-md-4">
             <a href="./corrida-solidaria-aveiro-e-nosso" class="ratio ratio-16x9 position-relative d-block">
-                <img src="/images/corrida-solidaria-aveiro-e-nosso.gif" alt="corrida-solidaria-aveiro-e-nosso" class="hover-img" />
+                <video class="hover-img" poster="/images/corrida-solidaria-aveiro-e-nosso-poster.jpg"
+                       width="1072" height="602" muted loop playsinline preload="none" loading="lazy"
+                       aria-label="Corrida Solidária Aveiro é Nosso — video recap">
+                    <source src="/images/corrida-solidaria-aveiro-e-nosso.mp4" type="video/mp4" />
+                </video>
                 <div class="overlay-text">Corrida Solidária Aveiro é Nosso // Video Recap</div>
             </a>
         </div>
@@ -153,6 +173,49 @@
         closeMenu.addEventListener("click", () => {
             mobileMenu.style.display = "none";
         });
+
+        // The grid loops carry no autoplay attribute on purpose. loading="lazy"
+        // on <video> only defers autoplay in Chrome 148+; Safari and Firefox
+        // would still download all five up front, which is the whole problem we
+        // are solving. Starting playback here means nothing is fetched until the
+        // tile is actually on screen, in every browser. With JS off, the poster
+        // stays put and the page still looks right.
+        const loops = document.querySelectorAll("video.hover-img");
+        const MARGIN = 200;
+
+        // play() rejects under iOS Low Power Mode, and there is nothing to fix
+        // when it does — the poster frame is the fallback and looks fine.
+        const start = (video) => video.play().catch(() => {});
+
+        const nearViewport = (el) => {
+            const r = el.getBoundingClientRect();
+            return r.bottom > -MARGIN && r.top < window.innerHeight + MARGIN;
+        };
+
+        const playWhatIsOnScreen = () => {
+            if (document.visibilityState !== "visible") return;
+            loops.forEach((video) => {
+                if (nearViewport(video)) start(video);
+            });
+        };
+
+        if ("IntersectionObserver" in window) {
+            const watcher = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) start(entry.target);
+                    else entry.target.pause();
+                });
+            }, { rootMargin: MARGIN + "px" });
+
+            loops.forEach((video) => watcher.observe(video));
+        } else {
+            playWhatIsOnScreen();
+        }
+
+        // Open the site in a background tab and the observer never fires: Chrome
+        // pauses the rendering pipeline that computes intersections, so switching
+        // to that tab would show five frozen posters. Re-check on the way back.
+        document.addEventListener("visibilitychange", playWhatIsOnScreen);
     });
 </script>
 </body>

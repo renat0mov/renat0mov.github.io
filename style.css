@@ -1,12 +1,19 @@
+/* woff2 first, ttf only for anything that cannot read it. The pair went from
+   385 KB to 71 KB. font-display: swap paints the text in a fallback face
+   immediately instead of hiding it until the font arrives. */
 @font-face {
     font-family: THICCCBOI;
     font-weight: bold;
-    src: url('THICCCBOI-Bold.ttf');
+    font-display: swap;
+    src: url('THICCCBOI-Bold.woff2') format('woff2'),
+         url('THICCCBOI-Bold.ttf') format('truetype');
 }
 @font-face {
     font-family: THICCCBOI;
     font-weight: normal;
-    src: url('THICCCBOI-Medium.ttf');
+    font-display: swap;
+    src: url('THICCCBOI-Medium.woff2') format('woff2'),
+         url('THICCCBOI-Medium.ttf') format('truetype');
 }
 
 body {
