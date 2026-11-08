@@ -1,9 +1,15 @@
 # renat0.mov
 
-Renato Ribeiro's video portfolio. Hand-written static HTML + Bootstrap 5.3.7 from CDN, one
-file per page, no build step, no framework. Served by **GitHub Pages** at `https://renat0.mov`.
+Renato Ribeiro's site: one English page in the style of danieldalen.com. Hand-written HTML, one
+stylesheet and two small vanilla scripts, no build step, no framework, no third-party requests.
+Served by **GitHub Pages** at `https://renat0.mov`.
 
-Personal project, not Audioglobo. Todoist label `renat0mov`, in the **Personal** project.
+Personal project, not Audioglobo. Todoist label `renat0mov`, in the **Personal** project. The
+design decisions are in the Todoist task "Redesign do site renat0.mov" (Personal › Next).
+
+*Rebuilt as one page on 8 Nov 2026 (branch `redesign-one-page`) from the mock-up Renato approved
+with Jarvis. The old multi-page Bootstrap portfolio, `/pt`, the project pages and their ~10 MB of
+media were deleted on his decision of 6 Nov 2026; they are in git history before `b2f0dbb`.*
 
 ## Deploy
 
@@ -13,156 +19,111 @@ whole repository to GitHub Pages on every push, and the custom domain `renat0.mo
 in the repo's Pages settings rather than by a `CNAME` file in the tree.
 
 There is no staging and no preview. Whatever lands on `main` is live a minute or two later,
-so check locally first and keep work on a branch until it is ready.
+so check locally first and keep work on a branch until Renato approves it.
 
 **The workflow uploads the entire repository, so anything committed here is published on
-renat0.mov.** `CLAUDE.md` and `serve.py` are deleted in the runner before packaging — see
-the `Strip files that are not part of the site` step — because both were being served at
-`renat0.mov/CLAUDE.md` and `renat0.mov/serve.py` until 13 Aug 2026. **Anything else added
-to this repo that is not part of the site has to be added to that step**, or it goes live.
-Nothing secret was exposed, but working notes are not something to hand a crawler that
-`llms.txt` has just invited in.
+renat0.mov.** `CLAUDE.md` and `serve.py` are deleted in the runner before packaging (the
+`Strip files that are not part of the site` step). **Anything else added to this repo that is
+not part of the site has to be added to that step**, or it goes live. `.claude/` is gitignored.
 
-**Preview with `python3 serve.py`, not `python3 -m http.server`.** The bare module 404s
-every nav link: the site links to `./about` with no extension, GitHub Pages resolves that
-to `about.html` and Python's server does not. `serve.py` adds that rule and the 404.html
-fallback, so local behaviour matches production. (There is no `--extensions` flag on
-`http.server` in any Python version — do not go looking for one.)
+**Preview with `python3 serve.py`** (http://localhost:8000), not `python3 -m http.server`:
+`serve.py` serves `404.html` with a real 404 for missing paths, as GitHub Pages does.
+Add `?theme=light` or `?theme=dark` to force a theme while checking.
 
-*Set up 13 Aug 2026. Before that Renato uploaded files through github.com's web form, which
-is why the 55 commits up to `0602005` all read "Add files via upload". The local folder was
-byte-identical to the repo when the history was attached, so nothing was lost.*
-
-## Pages
+## Files
 
 ```
-index.html          the work grid, 5 projects          EN
-about.html          bio + "Trusted By" list            EN
-pt/index.html       the same grid                      PT
-pt/sobre.html       the same bio                       PT
-404.html
-<slug>.html         one per project: title, credits, YouTube embed, still frames
-style.css
-serve.py            local preview only, never runs in production
+index.html          the page
+404.html            same style, links home; every URL in it is root-absolute (/style.css)
+style.css           all styles for both pages
+theme.js            sunrise/sunset theme, loaded in <head> without defer (no flash)
+main.js             copy button and project pop-ups, deferred
+fonts/              subset woff2 + OFL licences
+images/             WebP stills and marks, share.png (1200x630), LOGO MINI.png (source)
+media/              jogo-limpo-teaser.mp4 (1440x1080 4:3, 31 s, sound, 18.9 MB) and
+                    kapittal-os.mp4 (silent 1080p, 28 s, 5.7 MB); each loads only in its pop-up
+favicon.ico · favicon.svg · apple-touch-icon.png · icon-192/512.png · site.webmanifest
 robots.txt · sitemap.xml · llms.txt
-images/             ~10 MB — 5 MP4 loops + posters, plus JPG stills
+serve.py            local preview only, never runs in production
 ```
 
-Ten HTML files, all copies of each other with the content swapped. **A change to the
-header, footer or `<head>` has to be made in all ten**; there is no partial, no include
-and no template. Grep before assuming one edit is enough.
+## How the page works
 
-The five project pages are **English only**. `/pt` covers the two pages that carry prose.
-A Portuguese visitor clicking a project from `/pt/` lands on an English page, which is a
-known gap rather than a bug — the project pages are a title, a credit list and a video.
+**Security.** Each page has a Content-Security-Policy `<meta>` (GitHub Pages cannot send
+headers): only the site's own files, nothing from another site and no frames (YouTube was dropped on 8 Nov 2026; both videos are
+self-hosted).
+Consequence: **no `style="…"` attributes and no inline `<script>` or `<style>`** anywhere, or the
+browser silently drops them. Everything goes in `style.css` / `main.js`. JSON-LD is fine (it is
+not executed). Referrer policy is `strict-origin-when-cross-origin`.
 
-## Bilingual setup
+**Theme.** Light between the visitor's sunrise and sunset, dark otherwise. Place comes from the
+browser's timezone mapped to its main city (table inlined in `theme.js`, from macOS `zone.tab`);
+unknown zone falls back to 07:00–20:00; polar day/night handled; re-checked every minute. Colour
+tokens are CSS variables on `:root` / `[data-theme="dark"]`, registered with `@property` so the
+tokens themselves fade over 1.2 s at sunset (never put a colour transition on individual elements:
+it overrides their own hover transitions). Without JS, the system setting decides.
 
-| | English | Portuguese |
-|---|---|---|
-| Work | `/` | `/pt/` |
-| About | `/about` | `/pt/sobre` |
+**Opening animation.** Dalen's sequence as CSS keyframes. Each animated element has a `dN` class
+whose `animation-delay` was computed once from the mock-up's `renderVals()` maths (headline lines
+0.4 s + 0.12 s each, pills 1.19 s, words every 18 ms from 1.27 s, links 150 ms apart, then the
+list and the ©). **Changing the paragraph text means recomputing those classes**; the generator
+was a one-off script, not kept in the repo. Everything is off under `prefers-reduced-motion`.
 
-Every one of those four carries `hreflang` for `en`, `pt` and `x-default`, pointing at
-each other, and `sitemap.xml` repeats the same pairings. **If a URL moves, all three
-places have to move together** or Google sees a broken cluster and drops the alternates.
-`x-default` points at English.
+**Headline** never wraps a line: font size is `min(70px, (100vw − 96px) / 9.2)` (40px cap on
+phones) so narrow phones keep the three approved lines.
 
-A visible `PT` / `EN` switch sits in the nav on all four, desktop and mobile menu both,
-because `hreflang` tells Google and nothing else.
+**Project logos** (Audioglobo, Kapittal-os) are drawn with CSS `mask` in `currentColor`, so one
+black-on-transparent file serves both themes.
 
-Portuguese copy is Renato's own voice, not translated marketing. Current-standard
-orthography (`direto`, `projeto`). Project names stay exactly as they are in both
-languages — they are the works' own titles and match YouTube. Only the descriptor after
-the `//` changes.
+**Pop-ups** are one native `<dialog>` filled from a `<template>` per project. Esc, focus trap and
+inert background come from the browser; `main.js` adds the closing animation, backdrop click and
+focus return. A pop-up opened with the mouse focuses the dialog itself, so no focus ring is drawn
+round the card (Renato saw one in Safari); from the keyboard the first control gets focus and its
+ring. Nothing inside a template loads until its pop-up opens. Jogo Limpo (4:3 card, sound) waits
+for its play button, then shows the browser's controls; Kapittal-os plays muted on a loop and
+clicking it does nothing (Renato's call). Without JS the project names are plain links (the two
+MP4s, audioglobo.pt). audioglobo.pt refuses framing, so its pop-up is
+a picture of the site in a browser-style card, never an iframe.
 
-**Wording Renato has already corrected once — do not "fix" it back:**
-
-| Wrong | Right |
-|---|---|
-| Resumo em Vídeo | **Vídeo Resumo** |
-| E mais | **Entre outras** |
-
-He also keeps English loanwords the industry actually uses — "Filmmaking mudou a forma
-como olho para as produções ao vivo", "as lives obrigaram-me". That is how he talks.
-Leave them.
-
-**The two bios are no longer literal translations of each other.** Renato rewrote the
-Portuguese second and third paragraphs on 13 Aug 2026 and the English still says what it
-said before: the Portuguese ends on working in a team and "é só mandar mensagem", the
-English on working closely with people and "I'd love to hear from you". Deliberate, and
-his call to align them or not.
-
-## Structured data
-
-JSON-LD in `<head>`, one `@graph` per page. The `Person` node is `https://renat0.mov/#renato`
-on every page that emits it, so the graph joins up rather than describing four unrelated
-Renatos. Project pages carry `VideoObject`.
-
-**`uploadDate` and `duration` on those were read from each YouTube watch page, not
-estimated.** If a video is replaced, re-read them; a wrong `uploadDate` is worse than none
-because it is the field Google uses to decide the video is stale.
+**Search Console** verification tag is in `index.html` `<head>`. Removing it un-verifies the
+property.
 
 ## Media pipeline
 
-Nothing runs at build time. These are the commands used once, by hand, and the ones to run
-again when a project is added.
+Stills: `cwebp -q 78` at 1280 px wide (pop-up cards top out at 960 CSS px). The Jogo Limpo poster
+is the approved 16:9 still centre-cropped to 960x720.
 
-**Hero loop** — `images/<slug>.mp4` plus `images/<slug>-poster.jpg`:
+Jogo Limpo video, from Renato's 2880x2160 master (134 MB, in his OneDrive; GitHub refuses >100 MB):
+`ffmpeg -i JOGO_LIMPO_TEASER.mp4 -map 0:v:0 -map 0:a:0 -map_metadata -1 -vf scale=1440:1080:flags=lanczos
+-c:v libx264 -preset slow -crf 22 -profile:v high -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart`.
 
-```
-ffmpeg -i <slug>.gif -c:v libx264 -crf 23 -preset slow -pix_fmt yuv420p \
-  -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2,hqdn3d=4:3:6:4.5" \
-  -movflags +faststart -an <slug>.mp4
-```
+Icons: white mini logo on a black square, rounded (radius 56/256) everywhere except
+`apple-touch-icon.png`, which is a full square because iOS rounds it itself. Marks: lossless WebP
+from Renato's PNGs in `~/Downloads/logos for the personal website/`.
 
-`hqdn3d` is the part that matters. GIF encoders dither, x264 then spends most of its
-bitrate encoding that speckle, and stripping it first took one file from 2.03 MB to
-0.92 MB while making the dark areas look *better* than the GIF did. `yuv420p` for browser
-support, even dimensions because libx264 rejects the odd heights these GIFs had (603,
-607), `+faststart` so playback can begin before the download finishes.
+Fonts: Inter from `@fontsource-variable/inter` pinned to wght 400–600 with
+`fontTools.varLib.instancer`, Geist Mono 400/500 from `@fontsource/geist-mono`, Instrument Serif
+Italic from the OFL release; all cut with `fontTools.subset`. **Instrument Serif contains only the
+letters of `kid multimedia passion live productions`, Geist Mono only A–Z, digits, `-` and `·`.**
+New italic words or list items need a re-subset, or they fall back to Georgia / system mono.
 
-**Stills.** 2048 px on the long edge, JPEG q80, progressive. Bootstrap's `.container` tops
-out at 1320 CSS px, so 2048 still covers a retina panel; the 3840 px originals were costing
-~700 KB a frame for pixels nobody could see. Compared side by side at render size the two
-are indistinguishable.
-
-**Fonts.** `woff2_compress THICCCBOI-Bold.ttf` — 385 KB of TTF became 71 KB. The `.ttf`
-files stay as the `@font-face` fallback and are never fetched by a browser that reads woff2.
-
-**Why the grid videos have no `autoplay` attribute.** `loading="lazy"` on `<video>` is a
-real standard and does defer autoplay, but only Chrome 148+ ships it — Firefox and WebKit
-were still in review as of Aug 2026. Left to `autoplay`, Safari would download all five
-loops on load, which is the entire problem. Playback is started by an IntersectionObserver
-in `index.html` instead, which behaves the same everywhere. Two consequences:
-
-- **The `visibilitychange` listener beside the observer is not optional.** Chrome pauses
-  the rendering pipeline that computes intersections in a background tab, so a site opened
-  in one and switched to later would show five frozen posters without it.
-- **`play()` rejects under iOS Low Power Mode** and there is nothing to fix when it does.
-  The poster frame is the fallback, which is why every video has one.
-
-## Still to do
-
-- **Project pages have no Portuguese.** See *Pages* above.
-- **Submit `sitemap.xml` in Search Console** once this is deployed. Renato's own job; the
-  property already exists and its verification tag is in `index.html`.
-- The stale copy Google holds for `/about` (the pre-July bio) should refresh once the
-  sitemap is submitted.
+Share image and icons were rendered from HTML with WeasyPrint (see the global CLAUDE.md for the
+`DYLD_FALLBACK_LIBRARY_PATH` it needs), then `pdftoppm -r 96`.
 
 ## Rules
 
-Match the existing style: Bootstrap utility classes, no new dependencies, no build step, no
-framework. The site is fast to reason about because it is plain files — keep it that way.
+Plain files, no dependencies, no build step. Keep it that way.
 
 Never invent client names, credits, dates or places. If a fact is not already in the HTML
-or confirmed by Renato, leave it out.
+or confirmed by Renato, leave it out. **Renato is based in Aveiro** (confirmed 13 Aug 2026).
+The page says "At university I studied…": **which university is not established**, so do not
+name one.
 
-**Renato is based in Aveiro** (confirmed 13 Aug 2026). It is in the copy, the titles and
-the `PostalAddress` on the `Person` node. Porto appears only as somewhere the work
-happened — Primavera Sound — which is not the same claim and should stay that way.
+English only, one address (decided 8 Nov 2026). The Portuguese copy is kept in the Todoist task.
 
-**Jogo Limpo and DoZero carry "University project, no client" where the other pages have a
-`Client:` line.** They had no client because both are university projects; Renato confirmed
-that 13 Aug 2026 and asked for it to be stated rather than left blank. **Which university
-is not established** — do not name one.
+## Still to do (Renato's own jobs)
+
+- Approve the branch and merge it to `main` (that is the deploy).
+- Submit `sitemap.xml` in Search Console; the old URLs (`/about`, `/pt/`, project pages) will
+  404 until Google drops them.
+- DNS hardening at name.com (DMARC, CAA, GitHub domain verification, DNSSEC).
