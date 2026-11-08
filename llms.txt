@@ -1,32 +1,24 @@
-# Renato Ribeiro — renat0.mov
+# Renato Ribeiro · renat0.mov
 
-> Filmmaker and live director based in Aveiro, Portugal. Documentary, commercial and branded
-> content, plus multi-camera live direction for broadcasts, concerts, corporate events
-> and live streams. Portfolio site, English at the root and Portuguese under /pt.
+> Renato Ribeiro is a live director, camera operator, cinematographer and colorist based in
+> Aveiro, Portugal. He also builds websites and custom apps. The site is a single page in
+> English.
 
-Contact: renatoabrribeiro@gmail.com · Instagram @renat0.mov · YouTube @renat0mov
+Contact: renatoabrribeiro@gmail.com · Instagram @renat0.mov (https://www.instagram.com/renat0.mov/)
+· YouTube @renat0mov (https://www.youtube.com/@renat0mov)
 
-## Work
+## About
 
-- [Audioglobo x Primavera Sound Porto](https://renat0.mov/audioglobo-x-primavera-sound-porto):
-  Short documentary, 6m29s, created by Renato Ribeiro for Audioglobo. Follows the crew
-  rigging and running sound and lighting at Primavera Sound Porto.
-- [Corrida Solidária Aveiro é Nosso](https://renat0.mov/corrida-solidaria-aveiro-e-nosso):
-  Video recap of a charity run, 1m30s, created by Renato Ribeiro for Radio Ria.
-- [Grupo Kapittal at Arraial AAUAv](https://renat0.mov/grupo-kapittal-arraial-aauav):
-  Video recap of a live show, 1m11s, created by Renato Ribeiro for Grupo Kapittal.
-- [DoZero](https://renat0.mov/dozero-university-project): University webserie, 3m52s.
-  Renato Ribeiro on cinematography and post-production.
-- [Jogo Limpo](https://renat0.mov/jogo-limpo-university-project): Teaser for a university
-  project, 31s, created by Renato Ribeiro.
+He has been around concerts since he was a kid, studied multimedia and communication at
+university, and found his passion for multicamera live productions.
 
-## Pages
+## Work shown on the site
 
-- [Work](https://renat0.mov/): the portfolio grid.
-- [About](https://renat0.mov/about): background and the list of who he has worked with —
-  Audioglobo, Kapittal, Radio Ria, AAUAv, Fadu, UA.
-- [Trabalho](https://renat0.mov/pt/) and [Sobre](https://renat0.mov/pt/sobre): the same
-  two pages in Portuguese.
+- Jogo Limpo: a teaser he made, on YouTube at https://www.youtube.com/watch?v=XyRj_KS-1i8
+- Audioglobo: the website he built for Audioglobo, a sound and lighting company for live
+  shows. https://audioglobo.pt
+- Kapittal-os: a custom app he built. A short silent showcase video is at
+  https://renat0.mov/media/kapittal-os.mp4
 
 ## Notes
 
