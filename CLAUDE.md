@@ -58,7 +58,9 @@ referrer, so don't tighten it to `no-referrer`.
 **Theme.** Light between the visitor's sunrise and sunset, dark otherwise. Place comes from the
 browser's timezone mapped to its main city (table inlined in `theme.js`, from macOS `zone.tab`);
 unknown zone falls back to 07:00–20:00; polar day/night handled; re-checked every minute. Colour
-tokens are CSS variables on `:root` / `[data-theme="dark"]`. Without JS, the system setting decides.
+tokens are CSS variables on `:root` / `[data-theme="dark"]`, registered with `@property` so the
+tokens themselves fade over 1.2 s at sunset (never put a colour transition on individual elements:
+it overrides their own hover transitions). Without JS, the system setting decides.
 
 **Opening animation.** Dalen's sequence as CSS keyframes. Each animated element has a `dN` class
 whose `animation-delay` was computed once from the mock-up's `renderVals()` maths (headline lines
@@ -101,6 +103,8 @@ Plain files, no dependencies, no build step. Keep it that way.
 
 Never invent client names, credits, dates or places. If a fact is not already in the HTML
 or confirmed by Renato, leave it out. **Renato is based in Aveiro** (confirmed 13 Aug 2026).
+The page says "At university I studied…": **which university is not established**, so do not
+name one.
 
 English only, one address (decided 8 Nov 2026). The Portuguese copy is kept in the Todoist task.
 

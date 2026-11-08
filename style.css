@@ -53,9 +53,17 @@ body{
   font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
 }
-/* The 1.2 s fade is switched on after load (main.js adds .theme-ready), so it only plays
-   when an open tab flips at sunrise or sunset, never on arrival. */
-.theme-ready,.theme-ready body,.theme-ready .pill,.theme-ready .co,.theme-ready .roles,.theme-ready .foot{transition:background-color 1.2s ease,color 1.2s ease}
+/* Sunrise/sunset fade: the colour tokens themselves animate over 1.2 s, so everything that
+   uses them fades together and no element's own transition is overridden. Switched on after
+   load (main.js adds .theme-ready), so it never plays on arrival. Older browsers just snap. */
+@property --bg{syntax:"<color>";inherits:true;initial-value:#FAFAF7}
+@property --text{syntax:"<color>";inherits:true;initial-value:#0A0A0A}
+@property --muted{syntax:"<color>";inherits:true;initial-value:rgba(10,10,10,.68)}
+@property --faint{syntax:"<color>";inherits:true;initial-value:rgba(10,10,10,.45)}
+@property --surface{syntax:"<color>";inherits:true;initial-value:#EDEDEA}
+@property --surface-hover{syntax:"<color>";inherits:true;initial-value:#E3E3DF}
+@property --scrim{syntax:"<color>";inherits:true;initial-value:rgba(250,250,247,.72)}
+:root.theme-ready{transition:--bg 1.2s ease,--text 1.2s ease,--muted 1.2s ease,--faint 1.2s ease,--surface 1.2s ease,--surface-hover 1.2s ease,--scrim 1.2s ease}
 a{color:inherit}
 img{display:block}
 :focus-visible{outline:2px solid var(--text);outline-offset:3px}
