@@ -51,8 +51,12 @@ body{
   display:flex;flex-direction:column;align-items:center;
   background:var(--bg);color:var(--text);
   font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
-  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
 }
+/* No font-smoothing override: the mock-up uses the browser default, and "antialiased" draws the
+   text visibly thinner on a Mac. */
+/* main spans the page and centres its children, so the 480px paragraph sits on the same
+   centre line as the headline (it used to hug the left edge of a headline-wide box). */
+main{width:100%;display:flex;flex-direction:column;align-items:center}
 /* Sunrise/sunset fade: the colour tokens themselves animate over 1.2 s, so everything that
    uses them fades together and no element's own transition is overridden. Switched on after
    load (main.js adds .theme-ready), so it never plays on arrival. Older browsers just snap. */
@@ -67,6 +71,8 @@ body{
 a{color:inherit}
 img{display:block}
 :focus-visible{outline:2px solid var(--text);outline-offset:3px}
+/* Focus rings for the keyboard only: never after a mouse click (main.js sets these). */
+.ov:focus,.no-ring:focus{outline:none}
 .vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* Mini logo */
@@ -121,10 +127,11 @@ button.pill{cursor:pointer}
 /* What I do */
 .roles{margin-top:var(--roles-mt);max-width:720px;display:flex;flex-direction:column;align-items:center;gap:12px;font-family:"Geist Mono",ui-monospace,monospace;text-transform:uppercase;text-align:center}
 .roles h2{margin:0;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--faint)}
-.roles ul{margin:0;padding:0;list-style:none;font-size:var(--role-font);letter-spacing:.06em;line-height:1.9}
+/* Exactly the mock-up: 12px under the label, then both rows stacked in one 13px / 1.9 block. */
+.roles .rows{font-size:var(--role-font);letter-spacing:.06em;line-height:1.9;color:var(--text)}
+.roles ul{margin:0;padding:0;list-style:none}
 .roles li{display:inline;white-space:nowrap}
-/* The space between the <li>s already sits before the dot, so only the right side gets a margin. */
-.roles li+li::before{content:"·";margin-right:.6em;color:var(--faint)}
+.roles li+li::before{content:"·";margin:0 .6em;color:var(--faint)}
 .roles .row{display:block}
 .roles .row>li:first-child::before{content:none}
 /* Phones: the video roles go two per line, so no line starts with a dot. */
@@ -172,8 +179,11 @@ html:has(dialog[open]){overflow:hidden}
   box-shadow:0 30px 80px rgba(0,0,0,.3);font:inherit;text-decoration:none;
 }
 .ov-hit{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer}
-.ov-card img,.ov-card video,.ov-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ov-card img,.ov-card video{position:absolute;inset:0;width:100%;height:100%;border:0}
 .ov-card img,.ov-card video{object-fit:cover}
+/* Jogo Limpo is 4:3: same height as the 16:9 cards, narrower, never cropped. */
+.ov-card.ov-43{aspect-ratio:4/3;width:min(100%,720px,calc((100dvh - 200px) * 4 / 3))}
+.ov-43 video{object-fit:contain}
 .ov-shade{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.4))}
 .ov-play{width:var(--play);height:var(--play);border-radius:999px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
 .ov-play svg{width:40%;height:40%;margin-left:6%;fill:#0A0A0A}

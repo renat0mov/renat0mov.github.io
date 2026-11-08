@@ -40,7 +40,8 @@ theme.js            sunrise/sunset theme, loaded in <head> without defer (no fla
 main.js             copy button and project pop-ups, deferred
 fonts/              subset woff2 + OFL licences
 images/             WebP stills and marks, share.png (1200x630), LOGO MINI.png (source)
-media/              kapittal-os.mp4 (silent 1080p, 28 s, 5.7 MB; loads only in its pop-up)
+media/              jogo-limpo-teaser.mp4 (1440x1080 4:3, 31 s, sound, 18.9 MB) and
+                    kapittal-os.mp4 (silent 1080p, 28 s, 5.7 MB); each loads only in its pop-up
 favicon.ico · favicon.svg · apple-touch-icon.png · icon-192/512.png · site.webmanifest
 robots.txt · sitemap.xml · llms.txt
 serve.py            local preview only, never runs in production
@@ -49,11 +50,11 @@ serve.py            local preview only, never runs in production
 ## How the page works
 
 **Security.** Each page has a Content-Security-Policy `<meta>` (GitHub Pages cannot send
-headers): only the site's own files, plus `frame-src https://www.youtube-nocookie.com`.
+headers): only the site's own files, nothing from another site and no frames (YouTube was dropped on 8 Nov 2026; both videos are
+self-hosted).
 Consequence: **no `style="…"` attributes and no inline `<script>` or `<style>`** anywhere, or the
 browser silently drops them. Everything goes in `style.css` / `main.js`. JSON-LD is fine (it is
-not executed). Referrer policy is `strict-origin-when-cross-origin`; YouTube embeds need a
-referrer, so don't tighten it to `no-referrer`.
+not executed). Referrer policy is `strict-origin-when-cross-origin`.
 
 **Theme.** Light between the visitor's sunrise and sunset, dark otherwise. Place comes from the
 browser's timezone mapped to its main city (table inlined in `theme.js`, from macOS `zone.tab`);
@@ -76,8 +77,12 @@ black-on-transparent file serves both themes.
 
 **Pop-ups** are one native `<dialog>` filled from a `<template>` per project. Esc, focus trap and
 inert background come from the browser; `main.js` adds the closing animation, backdrop click and
-focus return. Nothing inside a template loads until its pop-up opens. Without JS the project names
-are plain links (YouTube, audioglobo.pt, the MP4). audioglobo.pt refuses framing, so its pop-up is
+focus return. A pop-up opened with the mouse focuses the dialog itself, so no focus ring is drawn
+round the card (Renato saw one in Safari); from the keyboard the first control gets focus and its
+ring. Nothing inside a template loads until its pop-up opens. Jogo Limpo (4:3 card, sound) waits
+for its play button, then shows the browser's controls; Kapittal-os plays muted on a loop and
+clicking it does nothing (Renato's call). Without JS the project names are plain links (the two
+MP4s, audioglobo.pt). audioglobo.pt refuses framing, so its pop-up is
 a picture of the site in a browser-style card, never an iframe.
 
 **Search Console** verification tag is in `index.html` `<head>`. Removing it un-verifies the
@@ -85,7 +90,15 @@ property.
 
 ## Media pipeline
 
-Stills: `cwebp -q 78` at 1280 px wide (pop-up cards top out at 960 CSS px). Marks: lossless WebP
+Stills: `cwebp -q 78` at 1280 px wide (pop-up cards top out at 960 CSS px). The Jogo Limpo poster
+is the approved 16:9 still centre-cropped to 960x720.
+
+Jogo Limpo video, from Renato's 2880x2160 master (134 MB, in his OneDrive; GitHub refuses >100 MB):
+`ffmpeg -i JOGO_LIMPO_TEASER.mp4 -map 0:v:0 -map 0:a:0 -map_metadata -1 -vf scale=1440:1080:flags=lanczos
+-c:v libx264 -preset slow -crf 22 -profile:v high -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart`.
+
+Icons: white mini logo on a black square, rounded (radius 56/256) everywhere except
+`apple-touch-icon.png`, which is a full square because iOS rounds it itself. Marks: lossless WebP
 from Renato's PNGs in `~/Downloads/logos for the personal website/`.
 
 Fonts: Inter from `@fontsource-variable/inter` pinned to wght 400–600 with

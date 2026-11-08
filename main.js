@@ -1,6 +1,6 @@
 /* renat0.mov: copy button and the project pop-ups. Plain JavaScript, no libraries.
    Without JavaScript the page still works: the project names are ordinary links to
-   YouTube, audioglobo.pt and the video file, and the copy button stays hidden. */
+   the two video files and audioglobo.pt, and the copy button stays hidden. */
 (function () {
   var root = document.documentElement;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -49,52 +49,47 @@
   }
 
   /* Pop-ups. One <dialog>, filled from a <template> when a project link is clicked. Images,
-     the video and the YouTube player live inside the templates, so none of them load until
-     their pop-up opens. */
+     and the videos live inside the templates, so none of them load until their pop-up opens. */
   var dialog = document.getElementById('project');
   if (!dialog || typeof dialog.showModal !== 'function') return; // old browser: links just work
   var trigger = null;
   var closing = false;
+  var byMouse = false;
 
-  function open(name, link) {
+  function open(name, link, mouse) {
     var tpl = document.getElementById('tpl-' + name);
     if (!tpl) return false;
     trigger = link;
+    byMouse = mouse;
     closing = false;
     dialog.classList.remove('is-closing');
     dialog.replaceChildren(tpl.content.cloneNode(true));
     dialog.setAttribute('aria-label', dialog.querySelector('[data-title]').getAttribute('data-title'));
 
     var video = dialog.querySelector('video');
-    if (video) {
-      if (reduce.matches) {
-        // No autoplay for people who asked for less motion: show the controls instead.
-        video.controls = true;
-      } else {
-        video.autoplay = true;
-        // Tap the video to pause or resume it.
-        video.addEventListener('click', function () { if (video.paused) video.play(); else video.pause(); });
-      }
-      video.src = video.getAttribute('data-src');
-    }
-
-    var play = dialog.querySelector('[data-youtube]');
-    if (play) {
+    var play = dialog.querySelector('[data-play]');
+    if (video && play) {
+      // Jogo Limpo has sound, so it waits for a click on the play button, then shows the
+      // browser's own controls (pause, volume, full screen).
       play.addEventListener('click', function () {
-        var id = play.getAttribute('data-youtube');
-        var frame = document.createElement('iframe');
-        frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
-        frame.title = play.getAttribute('aria-label').replace(/^Play /, '');
-        frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-        frame.allowFullscreen = true;
-        frame.referrerPolicy = 'strict-origin-when-cross-origin';
-        play.replaceWith(frame);
-        frame.focus();
+        play.remove();
+        video.controls = true;
+        video.play();
+        video.focus();
       });
+    } else if (video) {
+      // Kapittal-os is silent: it just plays on a loop. Clicking it does nothing.
+      // For people who asked for less motion it waits, with controls, instead of autoplaying.
+      if (reduce.matches) video.controls = true;
+      else video.autoplay = true;
     }
+    if (video) video.src = video.getAttribute('data-src');
 
     dialog.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', close); });
     dialog.showModal();
+    // Opened with the mouse: focus the pop-up itself, so no focus ring is drawn round the card.
+    // Opened from the keyboard: the browser focuses the first control, with its ring.
+    if (mouse) dialog.focus();
     return true;
   }
 
@@ -114,8 +109,11 @@
 
   dialog.addEventListener('close', function () {
     dialog.classList.remove('is-closing');
-    dialog.replaceChildren(); // stops the video or the YouTube player
-    if (trigger) trigger.focus();
+    dialog.replaceChildren(); // stops the video
+    if (!trigger) return;
+    // Back to the link that opened it. After a mouse click, without a ring (it comes back on Tab).
+    if (byMouse) trigger.classList.add('no-ring');
+    trigger.focus();
   });
   // Esc
   dialog.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
@@ -128,7 +126,14 @@
     link.setAttribute('aria-haspopup', 'dialog');
     link.addEventListener('click', function (e) {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button > 0) return; // new tab still works
-      if (open(link.getAttribute('data-project'), link)) e.preventDefault();
+      // A click from the keyboard (Enter) has detail 0; a real mouse click or tap is 1 or more.
+      if (open(link.getAttribute('data-project'), link, e.detail > 0)) e.preventDefault();
     });
+    link.addEventListener('blur', function () { link.classList.remove('no-ring'); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    byMouse = false; // the keyboard is in use now, so the link gets its ring back on close
+    document.querySelectorAll('.no-ring').forEach(function (el) { el.classList.remove('no-ring'); });
   });
 })();

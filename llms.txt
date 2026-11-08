@@ -14,7 +14,8 @@ university, and found his passion for multicamera live productions.
 
 ## Work shown on the site
 
-- Jogo Limpo: a teaser he made, on YouTube at https://www.youtube.com/watch?v=XyRj_KS-1i8
+- Jogo Limpo: a 31-second teaser he made, hosted on the site at
+  https://renat0.mov/media/jogo-limpo-teaser.mp4
 - Audioglobo: the website he built for Audioglobo, a sound and lighting company for live
   shows. https://audioglobo.pt
 - Kapittal-os: a custom app he built. A short silent showcase video is at
