@@ -1,0 +1,215 @@
+/* renat0.mov. One stylesheet for index.html and 404.html.
+   Every style lives here, never in a style="" attribute: the Content-Security-Policy in each page
+   only allows stylesheets from this site, and it would block inline styles. */
+
+/* Fonts, self-hosted and cut down to the characters the site uses (OFL, licences in /fonts). */
+@font-face{font-family:Inter;font-style:normal;font-weight:400 600;font-display:swap;src:url(/fonts/inter.woff2) format("woff2")}
+@font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url(/fonts/instrument-serif-italic.woff2) format("woff2")}
+@font-face{font-family:"Geist Mono";font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/geist-mono-400.woff2) format("woff2")}
+@font-face{font-family:"Geist Mono";font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/geist-mono-500.woff2) format("woff2")}
+
+/* Colours. theme.js sets data-theme on <html> before the page paints: light between the
+   visitor's sunrise and sunset, dark otherwise. Without JavaScript the system setting decides. */
+:root{
+  color-scheme:light;
+  --bg:#FAFAF7;--text:#0A0A0A;--muted:rgba(10,10,10,.68);--faint:rgba(10,10,10,.45);
+  --surface:#EDEDEA;--surface-hover:#E3E3DF;--scrim:rgba(250,250,247,.72);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#000;--text:#FFF;--muted:rgba(255,255,255,.72);--faint:rgba(255,255,255,.45);
+    --surface:#1C1C1C;--surface-hover:#262626;--scrim:rgba(0,0,0,.72);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#000;--text:#FFF;--muted:rgba(255,255,255,.72);--faint:rgba(255,255,255,.45);
+  --surface:#1C1C1C;--surface-hover:#262626;--scrim:rgba(0,0,0,.72);
+}
+
+/* Sizes: desktop first, phones below 600px. Same numbers as the mock-up's z values. */
+:root{
+  --pad:80px 48px 64px;--logo:44px;--h1:min(70px,calc((100vw - 96px) / 9.2));--body:21px;
+  --pill-h:44px;--pill-gap:8px;--pill-pad:0 14px 0 10px;--mail-pad:0 6px 0 10px;--pill-font:17px;--pill-icon:22px;
+  --social-gap:8px;--para-mt:28px;--roles-mt:48px;--role-font:13px;
+  --ov-pad:80px 48px;--play:76px;--bar-h:36px;--site-h:40px;--site-inset:36px;
+}
+@media (max-width:600px){
+  :root{
+    --pad:48px 20px 40px;--logo:36px;--h1:min(40px,calc((100vw - 44px) / 9.2));--body:18px;
+    --pill-h:36px;--pill-gap:5px;--pill-pad:0 9px 0 7px;--mail-pad:0 2px 0 7px;--pill-font:15px;--pill-icon:17px;
+    --social-gap:6px;--para-mt:24px;--roles-mt:40px;--role-font:12px;
+    --ov-pad:64px 16px;--play:56px;--bar-h:26px;--site-h:18px;--site-inset:14px;
+  }
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  margin:0;min-height:100vh;min-height:100dvh;padding:var(--pad);
+  display:flex;flex-direction:column;align-items:center;
+  background:var(--bg);color:var(--text);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+/* The 1.2 s fade is switched on after load (main.js adds .theme-ready), so it only plays
+   when an open tab flips at sunrise or sunset, never on arrival. */
+.theme-ready,.theme-ready body,.theme-ready .pill,.theme-ready .co,.theme-ready .roles,.theme-ready .foot{transition:background-color 1.2s ease,color 1.2s ease}
+a{color:inherit}
+img{display:block}
+:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* Mini logo */
+.logo{display:block;width:var(--logo);height:var(--logo);fill:currentColor}
+
+/* Headline: each line slides up out of its own mask. */
+h1{margin:28px 0 24px;max-width:900px;text-align:center;font-size:var(--h1);font-weight:600;line-height:1.05;letter-spacing:-.025em}
+/* A line never wraps: the font shrinks instead, so narrow phones keep the three approved lines.
+   9.2 is the widest line, "and I make all kinds", measured at 8.93 times the font size. */
+.hl{display:block;overflow:hidden;padding:.14em 0 .2em;margin:-.14em 0 -.2em;white-space:nowrap}
+
+/* Pills: Dalen's metrics. */
+.socials{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--social-gap)}
+.pill{
+  display:inline-flex;align-items:center;gap:var(--pill-gap);height:var(--pill-h);padding:var(--pill-pad);
+  border:0;border-radius:999px;background:var(--surface);color:var(--text);
+  font:inherit;font-size:var(--pill-font);letter-spacing:.01em;line-height:1;text-decoration:none;white-space:nowrap;
+  transition:background-color .2s,transform .4s cubic-bezier(.215,.61,.355,1);
+}
+button.pill{cursor:pointer}
+.pill-mail{padding:var(--mail-pad)}
+.pill-icon{display:inline-flex;flex:none;transform-origin:50% 50%}
+.pill-icon svg,.pill-icon img{display:block;width:var(--pill-icon);height:var(--pill-icon)}
+.mail-link{display:inline-flex;align-items:center;gap:var(--pill-gap);text-decoration:none}
+
+/* Copy button, as on audioglobo.pt/contactos: both icons in one grid cell, a tick for 2 s. */
+.copy{flex:none;display:inline-grid;place-items:center;width:32px;height:32px;padding:0;border:0;border-radius:6px;background:none;color:var(--muted);cursor:pointer;transition:color .2s ease}
+.copy[hidden]{display:none}
+.copy:hover,.copy:focus-visible,.copy.is-copied{color:var(--text)}
+.copy svg{grid-area:1/1;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:opacity .15s ease,transform .15s ease}
+.check-icon,.copy.is-copied .copy-icon{opacity:0;transform:scale(.6)}
+.copy.is-copied .check-icon{opacity:1;transform:none}
+
+/* Paragraph: a 480px column that wraps on its own. */
+.intro{margin:var(--para-mt) 0 0;max-width:480px;text-align:center;text-wrap:pretty;font-size:var(--body);line-height:1.5;color:var(--muted)}
+.intro em{white-space:nowrap;font-family:"Instrument Serif",Georgia,serif;font-size:1.22em;font-style:italic;line-height:1;color:var(--text)}
+.nw{white-space:nowrap}
+
+/* Project links, Dalen's .co style: small logo, then the name. */
+.co{display:inline;padding:0;border:0;background:none;color:var(--text);font:inherit;font-weight:500;white-space:nowrap;text-decoration:none;cursor:pointer}
+.co-icon{display:inline-block;margin-right:.3em;transition:transform .4s cubic-bezier(.215,.61,.355,1)}
+.co-thumb{width:auto;height:.95em;border-radius:.26em;vertical-align:-.14em;background:#000}
+/* Audioglobo and Kapittal-os logos are drawn in the text colour through a mask, so one file
+   serves both themes and fades with them. */
+.mark{display:inline-block;background-color:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.mark-ag{--m:url(/images/ag-mark.webp);height:.45em;width:calc(.45em * 256 / 76);vertical-align:.06em}
+.mark-k{--m:url(/images/k-mark.webp);height:.95em;width:calc(.95em * 128 / 124);vertical-align:-.14em}
+.pill .mark-ag{height:calc(var(--pill-icon) * .5);width:calc(var(--pill-icon) * .5 * 256 / 76);margin:0}
+.pill .mark-k{height:var(--pill-icon);width:calc(var(--pill-icon) * 128 / 124);margin:0}
+.pill .co-thumb{height:var(--pill-icon);width:var(--pill-icon);border-radius:6px;margin:0}
+
+/* What I do */
+.roles{margin-top:var(--roles-mt);max-width:720px;display:flex;flex-direction:column;align-items:center;gap:12px;font-family:"Geist Mono",ui-monospace,monospace;text-transform:uppercase;text-align:center}
+.roles h2{margin:0;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--faint)}
+.roles ul{margin:0;padding:0;list-style:none;font-size:var(--role-font);letter-spacing:.06em;line-height:1.9}
+.roles li{display:inline;white-space:nowrap}
+/* The space between the <li>s already sits before the dot, so only the right side gets a margin. */
+.roles li+li::before{content:"·";margin-right:.6em;color:var(--faint)}
+.roles .row{display:block}
+.roles .row>li:first-child::before{content:none}
+/* Phones: the video roles go two per line, so no line starts with a dot. */
+@media (max-width:600px){.roles .row>li:nth-child(3)::before{content:"\A";white-space:pre;margin:0}}
+
+.foot{margin-top:40px;font-size:15px;letter-spacing:.01em;color:var(--faint)}
+
+/* Hover: only with a real mouse. Pill lifts 3px and grows 4%, its icon wiggles. */
+@keyframes wiggle{0%{transform:rotate(0)}25%{transform:rotate(-14deg)}50%{transform:rotate(10deg)}75%{transform:rotate(-4deg)}100%{transform:rotate(0)}}
+@media (hover:hover) and (pointer:fine){
+  a.pill:hover,button.pill:hover,.pill-mail:hover{background:var(--surface-hover);transform:translateY(-3px) scale(1.04);transition-duration:.2s,.3s}
+  a.pill:hover .pill-icon,.pill-mail:hover .pill-icon{animation:wiggle .5s linear}
+  .co:hover{text-decoration:underline 1px;text-underline-offset:4px}
+  .co:hover .co-icon{transform:scale(1.25) rotate(-10deg);transition-timing-function:cubic-bezier(.34,1.9,.64,1)}
+}
+
+/* Opening animation: danieldalen.com's sequence and timings as CSS. Logo fades, headline lines
+   slide up, pills pop, words arrive one by one, links fade, then the list. */
+@keyframes inFade{from{opacity:0}}
+@keyframes inLine{from{transform:translateY(115%)}}
+@keyframes inPop{from{opacity:0;transform:translateY(18px) scale(.85)}}
+@keyframes inWord{from{opacity:0;transform:translateY(10px);filter:blur(4px)}}
+@keyframes inSlide{from{opacity:0;transform:translateX(-10px)}}
+.in-fade{animation:inFade .8s cubic-bezier(.25,.46,.45,.94) backwards}
+.in-line{display:block;animation:inLine 1.1s cubic-bezier(.23,1,.32,1) backwards}
+.in-pop{animation:inPop .6s cubic-bezier(.34,1.56,.64,1) backwards}
+.in-word{display:inline-block;animation:inWord .5s cubic-bezier(.215,.61,.355,1) backwards}
+.in-link{animation:inFade .6s cubic-bezier(.215,.61,.355,1) backwards}
+.in-slide{animation:inSlide .5s cubic-bezier(.215,.61,.355,1) backwards}
+/* Delays, worked out from the mock-up's renderVals(): 0.4 s + 0.12 s per headline line, pills at
+   1.19 s, words every 18 ms from 1.27 s, links 150 ms apart, list rows 70 ms apart, © last. */
+.d57{animation-delay:.4s}.d58{animation-delay:.52s}.d59{animation-delay:.64s}.d60{animation-delay:1.19s}.d0{animation-delay:1.27s}.d1{animation-delay:1.288s}.d2{animation-delay:1.306s}.d3{animation-delay:1.324s}.d4{animation-delay:1.342s}.d5{animation-delay:1.36s}.d6{animation-delay:1.378s}.d7{animation-delay:1.396s}.d8{animation-delay:1.414s}.d9{animation-delay:1.432s}.d10{animation-delay:1.45s}.d11{animation-delay:1.468s}.d12{animation-delay:1.486s}.d13{animation-delay:1.504s}.d14{animation-delay:1.522s}.d15{animation-delay:1.54s}.d16{animation-delay:1.558s}.d17{animation-delay:1.576s}.d18{animation-delay:1.594s}.d19{animation-delay:1.612s}.d21{animation-delay:1.63s}.d22{animation-delay:1.648s}.d23{animation-delay:1.666s}.d24{animation-delay:1.684s}.d25{animation-delay:1.702s}.d26{animation-delay:1.72s}.d27{animation-delay:1.738s}.d28{animation-delay:1.756s}.d29{animation-delay:1.774s}.d30{animation-delay:1.792s}.d31{animation-delay:1.81s}.d32{animation-delay:1.828s}.d33{animation-delay:1.846s}.d34{animation-delay:1.864s}.d35{animation-delay:1.882s}.d36{animation-delay:1.9s}.d38{animation-delay:1.918s}.d39{animation-delay:1.936s}.d40{animation-delay:1.954s}.d41{animation-delay:1.972s}.d43{animation-delay:1.99s}.d44{animation-delay:2.008s}.d20{animation-delay:2.024s}.d45{animation-delay:2.026s}.d46{animation-delay:2.044s}.d47{animation-delay:2.062s}.d48{animation-delay:2.08s}.d49{animation-delay:2.098s}.d50{animation-delay:2.116s}.d51{animation-delay:2.134s}.d52{animation-delay:2.152s}.d53{animation-delay:2.17s}.d37{animation-delay:2.174s}.d54{animation-delay:2.188s}.d55{animation-delay:2.206s}.d56{animation-delay:2.224s}.d42{animation-delay:2.324s}.d61{animation-delay:2.424s}.d62{animation-delay:2.494s}.d63{animation-delay:2.564s}.d64{animation-delay:2.834s}
+
+/* Pop-up. A native <dialog>: the browser handles Esc, keeps focus inside and makes the page
+   behind it inert. The page stays visible, blurred. The card rises in, the pills pop after it,
+   and everything drops away on close. */
+html:has(dialog[open]){overflow:hidden}
+.ov{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:var(--ov-pad);border:0;background:transparent;color:var(--text);overflow:auto}
+.ov[open]{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.ov::backdrop{background:var(--scrim);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.ov-card{
+  position:relative;display:block;flex:none;
+  width:min(100%,960px,calc((100dvh - 200px) * 16 / 9));aspect-ratio:16/9;
+  padding:0;border:0;border-radius:16px;overflow:hidden;background:#000;color:#FFF;
+  box-shadow:0 30px 80px rgba(0,0,0,.3);font:inherit;text-decoration:none;
+}
+.ov-hit{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer}
+.ov-card img,.ov-card video,.ov-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ov-card img,.ov-card video{object-fit:cover}
+.ov-shade{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.4))}
+.ov-play{width:var(--play);height:var(--play);border-radius:999px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.ov-play svg{width:40%;height:40%;margin-left:6%;fill:#0A0A0A}
+.ov-card:hover .ov-play{transform:scale(1.08)}
+.ov-note{position:absolute;left:12px;bottom:12px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#FFF;font-size:13px;line-height:1.2}
+/* Audioglobo: a browser window around a picture of the site, since audioglobo.pt refuses to be framed. */
+.ov-site{background:#111}
+.ov-bar{position:absolute;left:0;right:0;top:0;z-index:1;height:var(--bar-h);display:flex;align-items:center;gap:6px;padding:0 14px;background:#1C1C1C}
+.ov-dot{width:10px;height:10px;border-radius:999px;background:#FF5F57}
+.ov-dot+.ov-dot{background:#FEBC2E}
+.ov-dot+.ov-dot+.ov-dot{background:#28C840}
+.ov-url{position:absolute;left:50%;transform:translateX(-50%);padding:3px 14px;border-radius:6px;background:#2A2A2A;font-size:12px;line-height:1.4;color:rgba(255,255,255,.75)}
+.ov-view{position:absolute;left:0;right:0;bottom:0;top:var(--bar-h);overflow:hidden}
+.ov-view::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,.65) 100%)}
+.ov-heading{position:absolute;z-index:1;left:var(--site-inset);right:var(--site-inset);bottom:var(--site-inset);max-width:14em;font-size:var(--site-h);font-weight:600;line-height:1.08;letter-spacing:-.02em}
+.ov-pills{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--social-gap)}
+.ov-pills .pill-icon svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+@keyframes ovIn{from{opacity:0}}
+@keyframes ovOut{to{opacity:0}}
+@keyframes cardIn{from{opacity:0;transform:translateY(28px) scale(.96)}}
+@keyframes cardOut{to{opacity:0;transform:translateY(14px) scale(.97)}}
+@keyframes posterIn{from{transform:scale(1.12)}}
+.ov[open]::backdrop{animation:ovIn .35s ease backwards}
+.ov-card{animation:cardIn .6s cubic-bezier(.215,.61,.355,1) backwards}
+.ov-poster{animation:posterIn 1.6s cubic-bezier(.215,.61,.355,1) backwards}
+.ov-pills .pill{animation:inPop .5s cubic-bezier(.34,1.56,.64,1) backwards}
+.ov-pills .pill:nth-child(1){animation-delay:.14s}
+.ov-pills .pill:nth-child(2){animation-delay:.17s}
+.ov-pills .pill:nth-child(3){animation-delay:.22s}
+.ov.is-closing::backdrop{animation:ovOut .28s ease .05s forwards}
+.ov.is-closing .ov-card,.ov.is-closing .ov-pills .pill{animation:cardOut .26s cubic-bezier(.55,.055,.675,.19) forwards}
+
+/* 404 */
+.lost{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.lost p{margin:0 0 28px;font-size:var(--body);color:var(--muted);text-align:center}
+
+/* Reduced motion: no opening animation, no pop-up motion, no hover lift. */
+@media (prefers-reduced-motion:reduce){
+  .in-fade,.in-line,.in-pop,.in-word,.in-link,.in-slide,
+  .ov[open]::backdrop,.ov-card,.ov-poster,.ov-pills .pill,
+  .ov.is-closing::backdrop,.ov.is-closing .ov-card,.ov.is-closing .ov-pills .pill{animation:none}
+  .pill,.co-icon,.ov-play{transition:none}
+  a.pill:hover,button.pill:hover,.pill-mail:hover{transform:none}
+  a.pill:hover .pill-icon,.pill-mail:hover .pill-icon{animation:none}
+  .co:hover .co-icon,.ov-card:hover .ov-play{transform:none}
+}

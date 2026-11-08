@@ -1,328 +1,141 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="google-site-verification" content="w4OdPi8AbLavwF5ELW7gd3g-lXimrLig2bRwmsRpGuM" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- GitHub Pages cannot send security headers, so the policy lives here. Only this site's own
+     files may load, plus the YouTube player (from youtube-nocookie.com) inside the Jogo Limpo pop-up. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; media-src 'self'; frame-src https://www.youtube-nocookie.com; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Renato Ribeiro · Video, live production and websites</title>
+<meta name="description" content="Renato Ribeiro is a live director, camera operator, cinematographer and colorist in Aveiro, Portugal, who also builds websites and custom apps.">
+<link rel="canonical" href="https://renat0.mov/">
+<!-- Search Console verification for renat0.mov. Removing it un-verifies the property. -->
+<meta name="google-site-verification" content="w4OdPi8AbLavwF5ELW7gd3g-lXimrLig2bRwmsRpGuM">
 
-    <title>Renato Ribeiro — Filmmaker &amp; Live Director in Aveiro</title>
+<meta property="og:site_name" content="renat0.mov">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://renat0.mov/">
+<meta property="og:title" content="Renato Ribeiro · Video, live production and websites">
+<meta property="og:description" content="Live director, camera operator, cinematographer and colorist in Aveiro, Portugal. Also websites and custom apps.">
+<meta property="og:image" content="https://renat0.mov/images/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hi, I'm Renato and I make all kinds of cool stuff. renat0.mov">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Renato Ribeiro · Video, live production and websites">
+<meta name="twitter:description" content="Live director, camera operator, cinematographer and colorist in Aveiro, Portugal. Also websites and custom apps.">
+<meta name="twitter:image" content="https://renat0.mov/images/share.png">
 
-    <!-- SEO -->
-    <meta name="description" content="Video portfolio of Renato Ribeiro, filmmaker and live director based in Aveiro, Portugal. Documentary, commercial and branded work, plus multi-camera live production." />
-    <meta name="author" content="Renato Ribeiro" />
-    <link rel="canonical" href="https://renat0.mov/" />
-    <link rel="alternate" hreflang="en" href="https://renat0.mov/" />
-    <link rel="alternate" hreflang="pt" href="https://renat0.mov/pt/" />
-    <link rel="alternate" hreflang="x-default" href="https://renat0.mov/" />
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 
-    <!-- Open Graph -->
-    <meta property="og:site_name" content="renat0.mov" />
-    <meta property="og:title" content="Renato Ribeiro — Filmmaker &amp; Live Director" />
-    <meta property="og:description" content="Video portfolio of Renato Ribeiro, filmmaker and live director in Portugal. Documentary, commercial and branded work, plus multi-camera live production." />
-    <meta property="og:image" content="https://renat0.mov/images/audioglobo-x-primavera-sound-porto-poster.jpg" />
-    <meta property="og:url" content="https://renat0.mov/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_GB" />
-    <meta property="og:locale:alternate" content="pt_PT" />
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+<script src="/theme.js"></script>
+<script src="/main.js" defer></script>
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Renato Ribeiro — Filmmaker &amp; Live Director" />
-    <meta name="twitter:description" content="Video portfolio of Renato Ribeiro, filmmaker and live director in Portugal. Documentary, commercial and branded work, plus multi-camera live production." />
-    <meta name="twitter:image" content="https://renat0.mov/images/audioglobo-x-primavera-sound-porto-poster.jpg" />
-
-    <!-- Links -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
-    <link href="./style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-
-    <script type="application/ld+json">
+<script type="application/ld+json">
 {
-      "@context": "https://schema.org",
-      "@graph": [
-            {
-                  "@type": "WebSite",
-                  "@id": "https://renat0.mov/#website",
-                  "url": "https://renat0.mov/",
-                  "name": "renat0.mov",
-                  "inLanguage": "en",
-                  "publisher": {
-                        "@id": "https://renat0.mov/#renato"
-                  }
-            },
-            {
-                  "@type": "Person",
-                  "@id": "https://renat0.mov/#renato",
-                  "name": "Renato Ribeiro",
-                  "url": "https://renat0.mov/",
-                  "image": "https://renat0.mov/images/pp1.jpg",
-                  "description": "Renato Ribeiro is a filmmaker and live director based in Aveiro, Portugal. He works across documentary, commercial and branded content, and directs multi-camera live productions for broadcasts, concerts, corporate events and live streams.",
-                  "jobTitle": [
-                        "Filmmaker",
-                        "Live Director"
-                  ],
-                  "knowsLanguage": [
-                        "pt-PT",
-                        "en"
-                  ],
-                  "address": {
-                        "@type": "PostalAddress",
-                        "addressLocality": "Aveiro",
-                        "addressCountry": "PT"
-                  },
-                  "sameAs": [
-                        "https://www.instagram.com/renat0.mov/",
-                        "https://www.youtube.com/@renat0mov"
-                  ]
-            },
-            {
-                  "@type": "CollectionPage",
-                  "@id": "https://renat0.mov/#work",
-                  "url": "https://renat0.mov/",
-                  "name": "Work",
-                  "isPartOf": {
-                        "@id": "https://renat0.mov/#website"
-                  },
-                  "about": {
-                        "@id": "https://renat0.mov/#renato"
-                  },
-                  "mainEntity": {
-                        "@type": "ItemList",
-                        "itemListElement": [
-                              {
-                                    "@type": "ListItem",
-                                    "position": 1,
-                                    "url": "https://renat0.mov/audioglobo-x-primavera-sound-porto",
-                                    "name": "Audioglobo x Primavera Sound Porto // Short Documentary"
-                              },
-                              {
-                                    "@type": "ListItem",
-                                    "position": 2,
-                                    "url": "https://renat0.mov/jogo-limpo-university-project",
-                                    "name": "Jogo Limpo University Project // Teaser"
-                              },
-                              {
-                                    "@type": "ListItem",
-                                    "position": 3,
-                                    "url": "https://renat0.mov/dozero-university-project",
-                                    "name": "DoZero University Project // Webserie"
-                              },
-                              {
-                                    "@type": "ListItem",
-                                    "position": 4,
-                                    "url": "https://renat0.mov/grupo-kapittal-arraial-aauav",
-                                    "name": "Grupo Kapittal Arraial AAUAv // Video Recap"
-                              },
-                              {
-                                    "@type": "ListItem",
-                                    "position": 5,
-                                    "url": "https://renat0.mov/corrida-solidaria-aveiro-e-nosso",
-                                    "name": "Corrida Solidária Aveiro é Nosso // Video Recap"
-                              }
-                        ]
-                  }
-            }
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://renat0.mov/#website",
+      "url": "https://renat0.mov/",
+      "name": "renat0.mov",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://renat0.mov/#renato" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://renat0.mov/#renato",
+      "name": "Renato Ribeiro",
+      "url": "https://renat0.mov/",
+      "email": "mailto:renatoabrribeiro@gmail.com",
+      "jobTitle": ["Live director", "Camera operator", "Cinematographer", "Colorist"],
+      "address": { "@type": "PostalAddress", "addressLocality": "Aveiro", "addressCountry": "PT" },
+      "sameAs": [
+        "https://www.instagram.com/renat0.mov/",
+        "https://www.youtube.com/@renat0mov"
       ]
+    }
+  ]
 }
-    </script>
-</head>
-<body class="bg-black text-white mx-1">
-
-<!-- Navigation -->
-<div class="container-fluid text-center mt-5">
-    <div class="row justify-content-center align-items-center">
-        <!-- Desktop Navigation -->
-        <div class="col-3 d-none d-md-flex justify-content-center">
-            <a class="text-decoration-none text-white d-flex align-items-center mx-2" href="./"><p class="mb-0">WORK</p></a>
-            <a class="text-decoration-none text-white d-flex align-items-center mx-2 hover" href="./about"><p class="mb-0">ABOUT</p></a>
-            <a class="text-decoration-none text-white d-flex align-items-center mx-2 hover" href="/pt/" hreflang="pt" lang="pt-PT"><p class="mb-0">PT</p></a>
-        </div>
-
-        <!-- Center Name (always visible) -->
-        <div class="col-9 col-md-6 d-flex justify-content-center">
-            <h1 class="mb-0 site-name">
-                <a href="./">
-                    <img src="images/RENAT0.png" alt="renat0.mov — Renato Ribeiro" width="200" height="50" style="max-height: 50px">
-                </a>
-            </h1>
-        </div>
-
-        <!-- Desktop Socials -->
-        <div class="col-3 d-none d-md-flex justify-content-center">
-            <a class="text-decoration-none text-white mx-2 align-self-center hover" href="https://www.instagram.com/renat0.mov/" target="_blank" rel="noopener" aria-label="Renato Ribeiro on Instagram">
-                <span class="h5 bi bi-instagram mb-0" aria-hidden="true"></span>
-            </a>
-            <a class="text-decoration-none text-white mx-2 align-self-center hover" href="https://www.youtube.com/@renat0mov" target="_blank" rel="noopener" aria-label="Renato Ribeiro on YouTube">
-                <span class="h4 bi bi-youtube mb-0 d-flex" aria-hidden="true"></span>
-            </a>
-            <a class="text-decoration-none text-white mx-2 align-self-center hover" href="mailto:renatoabrribeiro@gmail.com" rel="mailto" aria-label="Email Renato Ribeiro">
-                <span class="h4 bi bi-envelope mb-0 d-flex" aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <div class="col-3 d-flex d-md-none justify-content-end align-items-center">
-            <button class="menu-toggle btn text-white p-0">
-                <i class="bi bi-list" style="font-size: 2rem;"></i>
-            </button>
-        </div>
-    </div>
-</div>
-
-<!-- Mobile Fullscreen Menu -->
-<div id="mobileMenu" class="mobile-menu">
-    <a class="close-menu btn text-white p-0">
-        <i class="bi bi-x-lg" style="font-size: 2rem;"></i>
-    </a>
-    <div class="menu-content text-center">
-        <div class="nav-links">
-            <a class="text-decoration-none text-white" href="./"><p class="mb-3">WORK</p></a>
-            <a class="text-decoration-none text-white" href="./about"><p class="mb-3 hover">ABOUT</p></a>
-            <a class="text-decoration-none text-white" href="/pt/" hreflang="pt" lang="pt-PT"><p class="mb-3">PT</p></a>
-        </div>
-        <div class="social-links">
-            <a class="text-decoration-none text-white mx-2 hover" href="https://www.instagram.com/renat0.mov/" target="_blank" rel="noopener" aria-label="Renato Ribeiro on Instagram">
-                <span class="h5 bi bi-instagram mb-0" aria-hidden="true"></span>
-            </a>
-            <a class="text-decoration-none text-white mx-2 hover" href="https://www.youtube.com/@renat0mov" target="_blank" rel="noopener" aria-label="Renato Ribeiro on YouTube">
-                <span class="h4 bi bi-youtube mb-0 d-flex" aria-hidden="true"></span>
-            </a>
-            <a class="text-decoration-none text-white mx-2 hover" href="mailto:renatoabrribeiro@gmail.com" rel="mailto" aria-label="Email Renato Ribeiro">
-                <span class="h4 bi bi-envelope mb-0 d-flex" aria-hidden="true"></span>
-            </a>
-        </div>
-    </div>
-</div>
-
-
-<!-- Image Grid -->
-<div class="container-fluid mt-5">
-    <div class="row g-2 justify-content-center">
-
-        <div class="col-12 col-sm-6 col-md-4">
-            <a href="./audioglobo-x-primavera-sound-porto" class="ratio ratio-16x9 position-relative d-block">
-                <video class="hover-img" poster="/images/audioglobo-x-primavera-sound-porto-poster.jpg"
-                       width="1072" height="602" muted loop playsinline preload="none" loading="lazy"
-                       aria-label="Audioglobo x Primavera Sound Porto — short documentary">
-                    <source src="/images/audioglobo-x-primavera-sound-porto.mp4" type="video/mp4" />
-                </video>
-                <div class="overlay-text">Audioglobo x Primavera Sound Porto // Short Documentary</div>
-            </a>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4">
-            <a href="./jogo-limpo-university-project" class="ratio ratio-16x9 position-relative d-block">
-                <video class="hover-img" poster="/images/jogo-limpo-university-project-poster.jpg"
-                       width="800" height="600" muted loop playsinline preload="none" loading="lazy"
-                       aria-label="Jogo Limpo — teaser">
-                    <source src="/images/jogo-limpo-university-project.mp4" type="video/mp4" />
-                </video>
-                <div class="overlay-text">Jogo Limpo University Project // Teaser</div>
-            </a>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4">
-            <a href="./dozero-university-project" class="ratio ratio-16x9 position-relative d-block">
-                <video class="hover-img" poster="/images/dozero-university-project-poster.jpg"
-                       width="1072" height="602" muted loop playsinline preload="none" loading="lazy"
-                       aria-label="DoZero — webserie">
-                    <source src="/images/dozero-university-project.mp4" type="video/mp4" />
-                </video>
-                <div class="overlay-text">DoZero University Project // Webserie</div>
-            </a>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4">
-            <a href="./grupo-kapittal-arraial-aauav" class="ratio ratio-16x9 position-relative d-block">
-                <video class="hover-img" poster="/images/grupo-kapittal-arraial-aauav-poster.jpg"
-                       width="1072" height="606" muted loop playsinline preload="none" loading="lazy"
-                       aria-label="Grupo Kapittal at Arraial AAUAv — video recap">
-                    <source src="/images/grupo-kapittal-arraial-aauav.mp4" type="video/mp4" />
-                </video>
-                <div class="overlay-text">Grupo Kapittal Arraial AAUAv // Video Recap</div>
-            </a>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4">
-            <a href="./corrida-solidaria-aveiro-e-nosso" class="ratio ratio-16x9 position-relative d-block">
-                <video class="hover-img" poster="/images/corrida-solidaria-aveiro-e-nosso-poster.jpg"
-                       width="1072" height="602" muted loop playsinline preload="none" loading="lazy"
-                       aria-label="Corrida Solidária Aveiro é Nosso — video recap">
-                    <source src="/images/corrida-solidaria-aveiro-e-nosso.mp4" type="video/mp4" />
-                </video>
-                <div class="overlay-text">Corrida Solidária Aveiro é Nosso // Video Recap</div>
-            </a>
-        </div>
-
-    </div>
-</div>
-
-<!-- Footer -->
-<div class="container my-5 text-center">
-    <img class="img-fluid footer-img" src="/images/LOGO%20MINI.png" alt="" width="32" height="28" aria-hidden="true">
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const menuToggle = document.querySelector(".menu-toggle");
-        const mobileMenu = document.getElementById("mobileMenu");
-        const closeMenu = document.querySelector(".close-menu");
-
-        menuToggle.addEventListener("click", () => {
-            mobileMenu.style.display = "flex";
-        });
-
-        closeMenu.addEventListener("click", () => {
-            mobileMenu.style.display = "none";
-        });
-
-        // The grid loops carry no autoplay attribute on purpose. loading="lazy"
-        // on <video> only defers autoplay in Chrome 148+; Safari and Firefox
-        // would still download all five up front, which is the whole problem we
-        // are solving. Starting playback here means nothing is fetched until the
-        // tile is actually on screen, in every browser. With JS off, the poster
-        // stays put and the page still looks right.
-        const loops = document.querySelectorAll("video.hover-img");
-        const MARGIN = 200;
-
-        // play() rejects under iOS Low Power Mode, and there is nothing to fix
-        // when it does — the poster frame is the fallback and looks fine.
-        const start = (video) => video.play().catch(() => {});
-
-        const nearViewport = (el) => {
-            const r = el.getBoundingClientRect();
-            return r.bottom > -MARGIN && r.top < window.innerHeight + MARGIN;
-        };
-
-        const playWhatIsOnScreen = () => {
-            if (document.visibilityState !== "visible") return;
-            loops.forEach((video) => {
-                if (nearViewport(video)) start(video);
-            });
-        };
-
-        if ("IntersectionObserver" in window) {
-            const watcher = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) start(entry.target);
-                    else entry.target.pause();
-                });
-            }, { rootMargin: MARGIN + "px" });
-
-            loops.forEach((video) => watcher.observe(video));
-        } else {
-            playWhatIsOnScreen();
-        }
-
-        // Open the site in a background tab and the observer never fires: Chrome
-        // pauses the rendering pipeline that computes intersections, so switching
-        // to that tab would show five frozen posters. Re-check on the way back.
-        document.addEventListener("visibilitychange", playWhatIsOnScreen);
-    });
 </script>
+</head>
+<body>
+
+<svg class="logo in-fade" viewBox="0 0 171 176" role="img" aria-label="renat0.mov">
+<path d="M5.79297 10C5.79297 9.44771 6.24068 9 6.79297 9H62.0825C73.1282 9 82.0825 17.9543 82.0825 29V84.289C82.0825 84.8413 81.6347 85.289 81.0825 85.289H6.79297C6.24068 85.289 5.79297 84.8413 5.79297 84.289V10Z"/>
+<path d="M6.29297 167.3H80.8753C81.3208 167.3 81.5439 166.762 81.2289 166.447L6.64652 91.8648C6.33154 91.5498 5.79297 91.7729 5.79297 92.2183V166.8C5.79297 167.076 6.01683 167.3 6.29297 167.3Z"/>
+<path d="M166 10C166 9.44771 165.552 9 165 9H109.711C98.6648 9 89.7105 17.9543 89.7105 29V84.289C89.7105 84.8413 90.1582 85.289 90.7105 85.289H165C165.552 85.289 166 84.8413 166 84.289V10Z"/>
+<path d="M90.21 167.3H164.792C165.238 167.3 165.461 166.762 165.146 166.447L90.5635 91.8648C90.2485 91.5498 89.71 91.7729 89.71 92.2183V166.8C89.71 167.076 89.9338 167.3 90.21 167.3Z"/>
+</svg>
+
+<main>
+<h1><span class="vh">Hi, I'm Renato and I make all kinds of cool stuff.</span><span class="hl" aria-hidden="true"><span class="in-line d57">Hi, I'm Renato</span></span><span class="hl" aria-hidden="true"><span class="in-line d58">and I make all kinds</span></span><span class="hl" aria-hidden="true"><span class="in-line d59">of cool stuff.</span></span></h1>
+
+<div class="socials">
+<span class="pill pill-mail in-pop d60"><a class="mail-link" href="mailto:renatoabrribeiro@gmail.com"><span class="pill-icon"><svg viewBox="52 37 88 76" role="img" aria-label="Email"><path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/><path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/><path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/><path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/><path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/></svg></span>renatoabrribeiro@gmail.com</a><button class="copy" type="button" data-email="renatoabrribeiro@gmail.com" aria-label="Copy email" title="Copy email" hidden><svg class="copy-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button></span>
+<span class="copy-status vh" role="status"></span>
+<a class="pill in-pop d0" href="https://www.instagram.com/renat0.mov/" target="_blank" rel="noopener"><span class="pill-icon"><svg viewBox="0 0 24 24" role="img" aria-label="Instagram"><defs><path id="igPath" d="M7.05377 0.143232C5.7833 0.203196 4.91557 0.406692 4.1573 0.70381C3.37236 1.00982 2.70696 1.41991 2.04503 2.08455C1.38232 2.74958 0.975338 3.41616 0.671658 4.2019C0.377635 4.9621 0.178395 5.83025 0.122292 7.1015C0.0665904 8.37509 0.0538167 8.7813 0.0600257 12.0237C0.0662107 15.2657 0.08052 15.6726 0.141253 16.9466C0.201984 18.2167 0.404721 19.0841 0.701836 19.8427C1.00823 20.6277 1.41791 21.2927 2.08293 21.955C2.74757 22.6174 3.41453 23.024 4.20063 23.3281C4.96006 23.6217 5.82857 23.8217 7.09944 23.8774C8.373 23.9335 8.77958 23.9459 12.0211 23.9397C15.2642 23.9335 15.6709 23.9192 16.9444 23.8588C18.2149 23.7981 19.0818 23.5946 19.8409 23.2983C20.6258 22.9911 21.2912 22.5822 21.9532 21.9171C22.6151 21.2525 23.0221 20.5855 23.3258 19.7994C23.6198 19.04 23.8198 18.1714 23.8751 16.9013C23.9308 15.627 23.944 15.22 23.9378 11.978C23.9316 8.73564 23.9169 8.32943 23.8566 7.05624C23.7962 5.78498 23.5927 4.918 23.296 4.15896C22.9892 3.374 22.5799 2.70935 21.9153 2.04664C21.2506 1.38471 20.5837 0.976939 19.7976 0.674023C19.0377 0.379998 18.1696 0.179595 16.8987 0.12466C15.6252 0.0681773 15.2186 0.0558048 11.9759 0.0619923C8.73394 0.0681797 8.32736 0.0821117 7.05377 0.143232ZM7.19306 21.7283C6.02897 21.6777 5.39684 21.4842 4.97555 21.3221C4.41768 21.1062 4.0196 20.8474 3.60062 20.4315C3.18242 20.0141 2.92282 19.6172 2.70502 19.0605C2.54136 18.6392 2.34446 18.0078 2.28991 16.8437C2.23072 15.5852 2.21719 15.2076 2.21138 12.0194C2.20519 8.83198 2.21678 8.45439 2.27173 7.19474C2.32162 6.03141 2.51624 5.3985 2.67793 4.97757C2.8938 4.41893 3.15183 4.02161 3.5685 3.60264C3.98592 3.18365 4.38285 2.92483 4.93993 2.70703C5.36085 2.5426 5.99222 2.34723 7.15592 2.29192C8.41517 2.23233 8.79235 2.21957 11.9797 2.21338C15.1679 2.20718 15.5455 2.21841 16.8051 2.27374C17.9684 2.32441 18.6013 2.51708 19.0219 2.67995C19.5801 2.89582 19.9782 3.15309 20.3968 3.57053C20.8154 3.98796 21.075 4.38412 21.2928 4.94237C21.4572 5.36212 21.6526 5.99427 21.7075 7.1576C21.7675 8.41687 21.781 8.79445 21.7868 11.9819C21.793 15.1701 21.7814 15.5477 21.7261 16.8066C21.6754 17.9706 21.4823 18.6032 21.3199 19.0249C21.104 19.5824 20.8459 19.9804 20.4289 20.3994C20.0119 20.8169 19.615 21.0772 19.0575 21.295C18.6373 21.4591 18.0052 21.6548 16.8423 21.7102C15.583 21.7693 15.2058 21.7829 12.0173 21.7887C8.82988 21.7949 8.45269 21.7829 7.19306 21.7283ZM16.927 5.61824C16.9285 6.40901 17.5715 7.04928 18.3623 7.04773C19.1534 7.04619 19.7937 6.40359 19.7925 5.61282C19.791 4.82205 19.148 4.1814 18.3569 4.18295C17.5657 4.1845 16.9255 4.82747 16.927 5.61824ZM5.86805 12.0124C5.87461 15.3987 8.62485 18.1378 12.0103 18.1312C15.3962 18.1246 18.1367 15.3751 18.1302 11.9889C18.1236 8.60373 15.373 5.86313 11.9867 5.8697C8.60124 5.87628 5.86146 8.62694 5.86805 12.0124ZM8.01862 12.0082C8.01475 9.81038 9.79357 8.02497 11.991 8.0211C14.1888 8.01685 15.9745 9.7949 15.9788 11.9931C15.9831 14.1913 14.2042 15.9763 12.0061 15.9806C9.80866 15.9848 8.02287 14.2064 8.01862 12.0082Z"/><radialGradient id="igR1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(20.2377 27.165) rotate(-115.776) scale(32.5656 48.4376)"><stop offset="0.24392" stop-color="#FF1B90"/><stop offset="0.436673" stop-color="#F80261"/><stop offset="0.688476" stop-color="#ED00C0"/><stop offset="0.776787" stop-color="#C500E9"/><stop offset="0.893155" stop-color="#7017FF"/></radialGradient><radialGradient id="igR2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8.71531 23.1173) rotate(-57.4396) scale(14.1103 14.6768)"><stop stop-color="#FFD600"/><stop offset="0.484375" stop-color="#FF6930"/><stop offset="0.734375" stop-color="#FE3B36"/><stop offset="1" stop-color="#FE3B36" stop-opacity="0"/></radialGradient></defs><use href="#igPath" fill="url(#igR1)"/><use href="#igPath" fill="url(#igR2)"/></svg></span>@renat0.mov</a>
+</div>
+
+<p class="intro"><span class="in-word d0">I've</span> <span class="in-word d1">been</span> <span class="in-word d2">around</span> <span class="in-word d3">concerts</span> <span class="in-word d4">since</span> <span class="in-word d5">I</span> <span class="in-word d6">was</span> <span class="in-word d7">a</span> <span class="nw"><em class="in-word d8">kid</em><span class="in-word d9">.</span></span> <span class="in-word d10">At</span> <span class="in-word d11">university</span> <span class="in-word d12">I</span> <span class="in-word d13">studied</span> <em class="in-word d14">multimedia</em> <span class="in-word d15">and</span> <span class="in-word d16">communication,</span> <span class="in-word d17">made</span> <span class="in-word d18">videos</span> <span class="in-word d19">like</span> <span class="nw"><a class="co in-link d20" href="https://www.youtube.com/watch?v=XyRj_KS-1i8" data-project="jogo" target="_blank" rel="noopener"><img class="co-icon co-thumb" src="/images/jogo-thumb.webp" alt="" width="64" height="64">Jogo Limpo</a><span class="in-word d21">,</span></span> <span class="in-word d22">and</span> <span class="in-word d23">found</span> <span class="in-word d24">my</span> <em class="in-word d25">passion</em> <span class="in-word d26">for</span> <span class="in-word d27">multicamera</span> <span class="nw"><em class="in-word d28">live productions</em><span class="in-word d29">.</span></span> <span class="in-word d30">Lately</span> <span class="in-word d31">I've</span> <span class="in-word d32">also</span> <span class="in-word d33">been</span> <span class="in-word d34">building</span> <span class="in-word d35">websites</span> <span class="in-word d36">like</span> <a class="co in-link d37" href="https://audioglobo.pt" data-project="ag" target="_blank" rel="noopener"><span class="co-icon mark mark-ag"></span>Audioglobo</a> <span class="in-word d38">and</span> <span class="in-word d39">custom</span> <span class="in-word d40">apps</span> <span class="in-word d41">like</span> <span class="nw"><a class="co in-link d42" href="/media/kapittal-os.mp4" data-project="k"><span class="co-icon mark mark-k"></span>Kapittal-os</a><span class="in-word d43">.</span></span> <span class="in-word d44">If</span> <span class="in-word d45">any</span> <span class="in-word d46">of</span> <span class="in-word d47">this</span> <span class="in-word d48">could</span> <span class="in-word d49">be</span> <span class="in-word d50">useful</span> <span class="in-word d51">to</span> <span class="in-word d52">you,</span> <span class="in-word d53">send</span> <span class="in-word d54">me</span> <span class="in-word d55">a</span> <span class="in-word d56">message.</span></p>
+
+<section class="roles" aria-labelledby="what-i-do">
+<h2 id="what-i-do" class="in-slide d61">What I do</h2>
+<ul class="row in-slide d62">
+<li>Live director</li>
+<li>Camera Operator</li>
+<li>Cinematographer</li>
+<li>Colorist</li>
+</ul>
+<ul class="row in-slide d63">
+<li>Websites</li>
+<li>Custom apps</li>
+</ul>
+</section>
+</main>
+
+<footer class="foot in-fade d64">© 2026 Renato Ribeiro</footer>
+
+<!-- Project pop-up. Filled from one of the templates below when a project name is clicked.
+     Nothing inside a <template> loads until it is used. -->
+<dialog class="ov" id="project"></dialog>
+
+<template id="tpl-jogo">
+<div class="ov-card" data-title="Jogo Limpo Teaser">
+<button class="ov-hit" type="button" data-youtube="XyRj_KS-1i8" aria-label="Play Jogo Limpo teaser"><img class="ov-poster" src="/images/jogo-limpo-poster.webp" alt="" width="1280" height="720"><span class="ov-shade"><span class="ov-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span></span><span class="ov-note">Teaser · YouTube</span></button>
+</div>
+<div class="ov-pills">
+<span class="pill"><span class="pill-icon"><img class="co-thumb" src="/images/jogo-thumb.webp" alt="" width="64" height="64"></span>Jogo Limpo Teaser</span>
+<button class="pill" type="button" data-close><span class="pill-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg></span>Close</button>
+</div>
+</template>
+
+<template id="tpl-k">
+<div class="ov-card" data-title="Kapittal-os">
+<video class="ov-poster" data-src="/media/kapittal-os.mp4" poster="/images/kapittal-os-poster.webp" muted loop playsinline preload="auto" aria-label="Kapittal-os showcase video, no sound"></video>
+</div>
+<div class="ov-pills">
+<span class="pill"><span class="pill-icon"><span class="mark mark-k"></span></span>Kapittal-os</span>
+<button class="pill" type="button" data-close><span class="pill-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg></span>Close</button>
+</div>
+</template>
+
+<template id="tpl-ag">
+<a class="ov-card ov-site" href="https://audioglobo.pt" target="_blank" rel="noopener" data-title="Audioglobo" aria-label="Open audioglobo.pt"><span class="ov-bar"><span class="ov-dot"></span><span class="ov-dot"></span><span class="ov-dot"></span><span class="ov-url">audioglobo.pt</span></span><span class="ov-view"><img class="ov-poster" src="/images/audioglobo-site.webp" alt="" width="1280" height="720"><span class="ov-heading">Professional sound and lighting for live shows</span></span></a>
+<div class="ov-pills">
+<span class="pill"><span class="pill-icon"><span class="mark mark-ag"></span></span>Audioglobo</span>
+<a class="pill" href="https://audioglobo.pt" target="_blank" rel="noopener"><span class="pill-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>Open the site</a>
+<button class="pill" type="button" data-close><span class="pill-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg></span>Close</button>
+</div>
+</template>
+
 </body>
 </html>

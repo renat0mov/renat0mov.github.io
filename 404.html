@@ -1,140 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Page not found — Renato Ribeiro</title>
-
-    <!-- SEO -->
-    <meta name="description" content="That page is not here. Head back to the work." />
-    <meta name="author" content="Renato Ribeiro" />
-    <link rel="canonical" href="https://renat0.mov/404" />
-    <meta name="robots" content="noindex, follow" />
-
-    <!-- Open Graph -->
-    <meta property="og:site_name" content="renat0.mov" />
-    <meta property="og:title" content="Page not found" />
-    <meta property="og:description" content="That page is not here. Head back to the work." />
-    <meta property="og:image" content="https://renat0.mov/images/pp1.jpg" />
-    <meta property="og:url" content="https://renat0.mov/404" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_GB" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Page not found" />
-    <meta name="twitter:description" content="That page is not here. Head back to the work." />
-    <meta name="twitter:image" content="https://renat0.mov/images/pp1.jpg" />
-
-    <!-- Links -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
-    <link href="./style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- GitHub Pages serves this at whatever address was missing (/pt/sobre, /about...), so every
+     file below is linked from the site root, never ./ -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Page not found · renat0.mov</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+<script src="/theme.js"></script>
 </head>
-<body class="bg-black text-white mx-1">
-
-<!-- Navigation -->
-<div class="container-fluid text-center mt-5">
-    <div class="row justify-content-center align-items-center">
-        <!-- Desktop Navigation -->
-        <div class="col-3 d-none d-md-flex justify-content-center">
-            <a class="text-decoration-none text-white d-flex align-items-center mx-2 hover" href="./"><p class="mb-0">WORK</p></a>
-            <a class="text-decoration-none text-white d-flex align-items-center mx-2 hover" href="./about"><p class="mb-0">ABOUT</p></a>
-        </div>
-
-        <!-- Center Name (always visible) -->
-        <div class="col-9 col-md-6 d-flex justify-content-center">
-            <a href="./">
-                <img src="images/RENAT0.png" alt="renat0.mov — Renato Ribeiro" width="200" height="50" style="max-height: 50px">
-            </a>
-        </div>
-
-        <!-- Desktop Socials -->
-        <div class="col-3 d-none d-md-flex justify-content-center">
-            <a class="text-decoration-none text-white mx-2 align-self-center hover" href="https://www.instagram.com/renat0.mov/" target="_blank" rel="noopener" aria-label="Renato Ribeiro on Instagram">
-                <span class="h5 bi bi-instagram mb-0" aria-hidden="true"></span>
-            </a>
-            <a class="text-decoration-none text-white mx-2 align-self-center hover" href="https://www.youtube.com/@renat0mov" target="_blank" rel="noopener" aria-label="Renato Ribeiro on YouTube">
-                <span class="h4 bi bi-youtube mb-0 d-flex" aria-hidden="true"></span>
-            </a>
-            <a class="text-decoration-none text-white mx-2 align-self-center hover" href="mailto:renatoabrribeiro@gmail.com" rel="mailto" aria-label="Email Renato Ribeiro">
-                <span class="h4 bi bi-envelope mb-0 d-flex" aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <div class="col-3 d-flex d-md-none justify-content-end align-items-center">
-            <button class="menu-toggle btn text-white p-0">
-                <i class="bi bi-list" style="font-size: 2rem;"></i>
-            </button>
-        </div>
-    </div>
-</div>
-
-<!-- Mobile Fullscreen Menu -->
-<div id="mobileMenu" class="mobile-menu">
-    <a class="close-menu btn text-white p-0">
-        <i class="bi bi-x-lg" style="font-size: 2rem;"></i>
-    </a>
-    <div class="menu-content text-center">
-        <div class="nav-links">
-            <a class="text-decoration-none text-white" href="./"><p class="mb-3">WORK</p></a>
-            <a class="text-decoration-none text-white" href="./about"><p class="mb-3">ABOUT</p></a>
-        </div>
-        <div class="social-links">
-            <a class="text-decoration-none text-white mx-2 hover" href="https://www.instagram.com/renat0.mov/" target="_blank" rel="noopener" aria-label="Renato Ribeiro on Instagram">
-                <span class="h5 bi bi-instagram mb-0" aria-hidden="true"></span>
-            </a>
-            <a class="text-decoration-none text-white mx-2 hover" href="https://www.youtube.com/@renat0mov" target="_blank" rel="noopener" aria-label="Renato Ribeiro on YouTube">
-                <span class="h4 bi bi-youtube mb-0 d-flex" aria-hidden="true"></span>
-            </a>
-            <a class="text-decoration-none text-white mx-2 hover" href="mailto:renatoabrribeiro@gmail.com" rel="mailto" aria-label="Email Renato Ribeiro">
-                <span class="h4 bi bi-envelope mb-0 d-flex" aria-hidden="true"></span>
-            </a>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="container d-flex flex-column justify-content-center align-items-center text-center" style="min-height: 80vh;">
-    <h1 class="fst-italic display-1 mb-0">404 - Not Found</h1>
-    <p class="h1 mb-0">Looks like this scene was cut from the final edit.</p>
-    <p style="opacity: 5%;">note to self: don’t let visitors land here again...</p>
-</div>
-
-
-
-
-
-<!-- Footer -->
-<div class="container my-5 text-center">
-    <img class="img-fluid footer-img" src="/images/LOGO%20MINI.png" alt="" width="32" height="28" aria-hidden="true">
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const menuToggle = document.querySelector(".menu-toggle");
-        const mobileMenu = document.getElementById("mobileMenu");
-        const closeMenu = document.querySelector(".close-menu");
-
-        menuToggle.addEventListener("click", () => {
-            mobileMenu.style.display = "flex";
-        });
-
-        closeMenu.addEventListener("click", () => {
-            mobileMenu.style.display = "none";
-        });
-    });
-</script>
+<body>
+<main class="lost">
+<a href="/" aria-label="renat0.mov home"><svg class="logo in-fade" viewBox="0 0 171 176" aria-hidden="true">
+<path d="M5.79297 10C5.79297 9.44771 6.24068 9 6.79297 9H62.0825C73.1282 9 82.0825 17.9543 82.0825 29V84.289C82.0825 84.8413 81.6347 85.289 81.0825 85.289H6.79297C6.24068 85.289 5.79297 84.8413 5.79297 84.289V10Z"/>
+<path d="M6.29297 167.3H80.8753C81.3208 167.3 81.5439 166.762 81.2289 166.447L6.64652 91.8648C6.33154 91.5498 5.79297 91.7729 5.79297 92.2183V166.8C5.79297 167.076 6.01683 167.3 6.29297 167.3Z"/>
+<path d="M166 10C166 9.44771 165.552 9 165 9H109.711C98.6648 9 89.7105 17.9543 89.7105 29V84.289C89.7105 84.8413 90.1582 85.289 90.7105 85.289H165C165.552 85.289 166 84.8413 166 84.289V10Z"/>
+<path d="M90.21 167.3H164.792C165.238 167.3 165.461 166.762 165.146 166.447L90.5635 91.8648C90.2485 91.5498 89.71 91.7729 89.71 92.2183V166.8C89.71 167.076 89.9338 167.3 90.21 167.3Z"/>
+</svg></a>
+<h1><span class="vh">This page isn't here.</span><span class="hl" aria-hidden="true"><span class="in-line d57">This page</span></span><span class="hl" aria-hidden="true"><span class="in-line d58">isn't here.</span></span></h1>
+<p class="in-fade d60">The whole site is one page now.</p>
+<a class="pill in-pop d0" href="/"><span class="pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></span>Back to renat0.mov</a>
+</main>
 </body>
 </html>
