@@ -4,11 +4,11 @@ Renato Ribeiro's site: one English page in the style of danieldalen.com. Hand-wr
 stylesheet and two small vanilla scripts, no build step, no framework, no third-party requests.
 Served by **GitHub Pages** at `https://renat0.mov`.
 
-Personal project, not Audioglobo. Todoist label `renat0mov`, in the **Personal** project. The
+Personal project, not Audioglobo. Todoist label `personal`, in the **Personal** project. The
 design decisions are in the Todoist task "Redesign do site renat0.mov" (Personal › Next).
 
 *Rebuilt as one page on 8 Nov 2026 (branch `redesign-one-page`) from the mock-up Renato approved
-with Jarvis. The old multi-page Bootstrap portfolio, `/pt`, the project pages and their ~10 MB of
+with Jarvis, and live since 8 Nov 2026 (merge `d42e0ec`). The old multi-page Bootstrap portfolio, `/pt`, the project pages and their ~10 MB of
 media were deleted on his decision of 6 Nov 2026; they are in git history before `b2f0dbb`.*
 
 ## Deploy
@@ -121,9 +121,16 @@ name one.
 
 English only, one address (decided 8 Nov 2026). The Portuguese copy is kept in the Todoist task.
 
-## Still to do (Renato's own jobs)
+## Launch, settled 9 Nov 2026
 
-- Approve the branch and merge it to `main` (that is the deploy).
-- Submit `sitemap.xml` in Search Console; the old URLs (`/about`, `/pt/`, project pages) will
-  404 until Google drops them.
-- DNS hardening at name.com (DMARC, CAA, GitHub domain verification, DNSSEC).
+- Live on `main` since 8 Nov 2026. Renato tested Safari, iPhone and the WhatsApp preview.
+- Search Console: new `sitemap.xml` submitted; temporary removals requested for `/about`, the five
+  old project pages and the `/pt/` prefix.
+- DNS at name.com: `_dmarc` TXT `v=DMARC1; p=reject`, SPF `v=spf1 -all` (renat0.mov never sends
+  email), and the GitHub Pages domain verification TXT `_github-pages-challenge-renat0mov`, which
+  must stay or the verification lapses. **Do not remove the `google-site-verification` TXT either.**
+- Not done, on purpose: CAA and a null MX (name.com's editor offers neither, so the old
+  `mx3`–`mx8.name.com` MX rows stay; forwarding is off, so mail bounces) and DNSSEC (not offered
+  on this account's page). AAAA records for GitHub's IPv6 addresses (`2606:50c0:8000::153` to
+  `8003::153`) are optional; Renato chose not to add them for now.
+- The domain renews on 18 Aug 2027 and auto-renew needs attention; there is a Todoist task for it.
