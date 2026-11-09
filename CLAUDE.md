@@ -133,4 +133,4 @@ English only, one address (decided 8 Nov 2026). The Portuguese copy is kept in t
   `mx3`–`mx8.name.com` MX rows stay; forwarding is off, so mail bounces) and DNSSEC (not offered
   on this account's page). AAAA records for GitHub's IPv6 addresses (`2606:50c0:8000::153` to
   `8003::153`) are optional; Renato chose not to add them for now.
-- The domain renews on 18 Aug 2027 and auto-renew needs attention; there is a Todoist task for it.
+- Domain renewal is tracked in Todoist.
