@@ -42,7 +42,7 @@ fonts/              subset woff2 + OFL licences
 images/             WebP stills and marks, share.png (1200x630), LOGO MINI.png (source)
 media/              jogo-limpo-teaser.mp4 (1440x1080 4:3, 31 s, sound, 18.9 MB) and
                     kapittal-os.mp4 (silent 1080p, 28 s, 5.7 MB); each loads only in its pop-up
-favicon.ico · favicon.svg · apple-touch-icon.png · icon-192/512.png · site.webmanifest
+favicon(-dark).ico · favicon(-dark).svg · apple-touch-icon.png · icon-192/512.png · site.webmanifest
 robots.txt · sitemap.xml · llms.txt
 serve.py            local preview only, never runs in production
 ```
@@ -98,7 +98,13 @@ Jogo Limpo video, from Renato's 2880x2160 master (134 MB, in his OneDrive; GitHu
 -c:v libx264 -preset slow -crf 22 -profile:v high -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart`.
 
 Icons: white mini logo on a black square, rounded (radius 56/256) everywhere except
-`apple-touch-icon.png`, which is a full square because iOS rounds it itself. Marks: lossless WebP
+`apple-touch-icon.png`, which is a full square because iOS rounds it itself. **Dark-mode favicon**
+(9 Nov 2026): `favicon-dark.svg` / `favicon-dark.ico` are the inverse, a white rounded tile with the
+black mark, from Renato's `Frame 33.svg`. They follow the browser's light/dark mode, not the sunrise
+theme, because they have to stand out from the tab bar: Safari puts a white plate behind a black icon
+on its dark tab bar. Media queries on the `<link rel="icon">` tags do it, and the end of `theme.js`
+re-creates the links for browsers that ignore those (Safari ignores `@media` inside an SVG favicon,
+WebKit bug 309949). Marks: lossless WebP
 from Renato's PNGs in `~/Downloads/logos for the personal website/`.
 
 Fonts: Inter from `@fontsource-variable/inter` pinned to wght 400–600 with

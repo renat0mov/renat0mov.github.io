@@ -9,8 +9,13 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Page not found · renat0.mov</title>
 <meta name="robots" content="noindex">
-<link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!-- Black icon for a light browser, white one for a dark browser, so it always stands out from
+     the tab bar (Safari puts a white plate behind an icon it finds too dark). theme.js repeats this
+     for browsers that ignore media on icons. -->
+<link rel="icon" href="/favicon.ico" sizes="32x32" media="not all and (prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" media="not all and (prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon-dark.ico" sizes="32x32" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">

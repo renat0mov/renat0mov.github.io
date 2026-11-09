@@ -46,3 +46,26 @@
   // Re-check every minute, so a tab left open flips at sunset.
   if (!forced) setInterval(apply, 60000);
 })();
+
+// Favicon follows the browser's light or dark mode (not the sunrise theme above), because what
+// it has to stand out from is the browser's tab bar. The icon links carry media queries; this
+// redoes them as plain links for browsers that ignore those, and again whenever the mode changes.
+(function () {
+  if (!window.matchMedia) return;
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  function setIcons() {
+    var dark = mq.matches ? '-dark' : '';
+    var old = document.querySelectorAll('link[rel="icon"]');
+    for (var i = 0; i < old.length; i++) old[i].parentNode.removeChild(old[i]);
+    [['ico', 'sizes', '32x32'], ['svg', 'type', 'image/svg+xml']].forEach(function (f) {
+      var link = document.createElement('link');
+      link.rel = 'icon';
+      link.setAttribute(f[1], f[2]);
+      link.href = '/favicon' + dark + '.' + f[0];
+      document.head.appendChild(link);
+    });
+  }
+  setIcons();
+  if (mq.addEventListener) mq.addEventListener('change', setIcons);
+  else if (mq.addListener) mq.addListener(setIcons);
+})();
